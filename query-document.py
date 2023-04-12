@@ -7,6 +7,8 @@ import os
 parser = argparse.ArgumentParser()
 parser.add_argument("--query", type=str, required=True)
 parser.add_argument("--openai-api-key", type=str, required=True)
+parser.add_argument("--k", type=int, default=5)
+parser.add_argument("--temperature", type=float, default=0.0)
 args = parser.parse_args()
 
 os.environ["OPENAI_API_KEY"] = args.openai_api_key
@@ -36,7 +38,7 @@ def evidence_to_messages(evidences, query):
     ]
     return messages
 
-def get_evidence(query, model, dataset, k=5):
+def get_evidence(query, model, dataset, k):
     query_embedding = model.encode(query)
     _, evidence = dataset.get_nearest_examples(
         "embeddings",
@@ -45,9 +47,9 @@ def get_evidence(query, model, dataset, k=5):
     )
     return evidence
 
-def get_answer(query, evidence):
+def get_answer(query, evidence, temperature):
     messages = evidence_to_messages(evidence, query)
-    completion = call_chatgpt_api(messages, model_name="gpt-3.5-turbo-0301", temperature=0)
+    completion = call_chatgpt_api(messages, model_name="gpt-3.5-turbo-0301", temperature=temperature)
     answer = completion["choices"][0]["message"]["content"].strip()
     return answer
 
@@ -57,8 +59,8 @@ model = sentence_transformers.SentenceTransformer(
 dataset = datasets.load_dataset("json", data_files="data.jsonl", split="train")
 dataset.load_faiss_index("embeddings", "index.faiss")
 
-evidence = get_evidence(args.query, model, dataset)
-answer = get_answer(args.query, evidence)
+evidence = get_evidence(args.query, model, dataset, args.k)
+answer = get_answer(args.query, evidence, args.temperature)
 
 print("Evidence:")
 print(evidence)
