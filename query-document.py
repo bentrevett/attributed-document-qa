@@ -21,7 +21,7 @@ def call_chatgpt_api(messages, model_name, temperature):
     return response
 
 def get_prompt_from_evidences(evidences, query):
-    prompt = "Here are some lines of text extracted from a financial document. All information extracted is related to the client.\n"
+    prompt = "Here are some lines of text extracted from a document.\n"
     for i, text in enumerate(evidences["text"], start=1):
         prompt += f"{i}: {text}\n"
     prompt += "\n"
