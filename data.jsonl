@@ -1,0 +1,1078 @@
+{"text": "ReportLab - PDF Processing with Python", "page": 2, "line": 1}
+{"text": "Michael Driscoll", "page": 2, "line": 2}
+{"text": "Thisbookisforsaleathttp://leanpub.com/reportlab", "page": 2, "line": 3}
+{"text": "Thisversionwaspublishedon2019-12-02", "page": 2, "line": 4}
+{"text": "ThisisaLeanpubbook.LeanpubempowersauthorsandpublisherswiththeLeanPublishingprocess.LeanPublishingistheactofpublishinganin-progressebookusinglightweighttoolsandmanyiterationstogetreaderfeedback,pivotuntilyouhavetherightbookandbuildtractiononceyoudo.", "page": 2, "line": 5}
+{"text": "\u00a92017-2019MichaelDriscoll", "page": 2, "line": 6}
+{"text": "Contents", "page": 3, "line": 1}
+{"text": "Introduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1", "page": 3, "line": 2}
+{"text": "AbouttheAuthor. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2", "page": 3, "line": 3}
+{"text": "Conventions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2", "page": 3, "line": 4}
+{"text": "Settingup&ActivatingaVirtualEnvironment . . . . . . . . . . . . . . . . . . . . . . . . . . 2", "page": 3, "line": 5}
+{"text": "Dependencies . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4", "page": 3, "line": 6}
+{"text": "Installation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4", "page": 3, "line": 7}
+{"text": "Configuration . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5", "page": 3, "line": 8}
+{"text": "ReaderFeedback . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6", "page": 3, "line": 9}
+{"text": "Errata . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6", "page": 3, "line": 10}
+{"text": "CodeExamples . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6", "page": 3, "line": 11}
+{"text": "Chapter1-GettingStartedwithReportlab . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7", "page": 3, "line": 12}
+{"text": "TheCanvasObject . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8", "page": 3, "line": 13}
+{"text": "CanvasMethods . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12", "page": 3, "line": 14}
+{"text": "UsingColorsinReportLab . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22", "page": 3, "line": 15}
+{"text": "AddingaPhoto . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26", "page": 3, "line": 16}
+{"text": "Thetextobject . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 28", "page": 3, "line": 17}
+{"text": "CreateaPageBreak . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34", "page": 3, "line": 18}
+{"text": "CanvasOrientation(Portraitvs.Landscape) . . . . . . . . . . . . . . . . . . . . . . . . . . . . 35", "page": 3, "line": 19}
+{"text": "Othermethods . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 35", "page": 3, "line": 20}
+{"text": "ASimpleSampleApplication . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 36", "page": 3, "line": 21}
+{"text": "WrappingUp . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 37", "page": 3, "line": 22}
+{"text": "Chapter2-ReportLabandFonts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 38", "page": 3, "line": 23}
+{"text": "Unicode/UTF8istheDefault . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 38", "page": 3, "line": 24}
+{"text": "TheStandardFonts. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 38", "page": 3, "line": 25}
+{"text": "OtherType-1Fonts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 40", "page": 3, "line": 26}
+{"text": "TrueTypeFonts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 43", "page": 3, "line": 27}
+{"text": "AsianFonts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 45", "page": 3, "line": 28}
+{"text": "SwitchingBetweenFonts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 49", "page": 3, "line": 29}
+{"text": "WrappingUp . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 51", "page": 3, "line": 30}
+{"text": "Introduction", "page": 4, "line": 1}
+{"text": "The Reportlab PDF Toolkit started life in the year 2000 by a company called \u201cReportlab Inc.\u201d.", "page": 4, "line": 2}
+{"text": "Reportlab is now owned by \u201cReportLab Europe Ltd\u201d. They produce the open source version of", "page": 4, "line": 3}
+{"text": "Reportlab. The Reportlab toolkit is actually the foundation of their commercial product, Report", "page": 4, "line": 4}
+{"text": "Markup Language which is available in their Reportlab PLUS package. This book is focused on", "page": 4, "line": 5}
+{"text": "the open source version of Reportlab. The Reportlab PDF Toolkit allows you to create in Adobe\u2019s", "page": 4, "line": 6}
+{"text": "Portable Document Format (PDF) quickly and efficiently in the Python programming language.", "page": 4, "line": 7}
+{"text": "ReportlabisthedefactomethodofgeneratingPDFsinPython.YoucanalsouseReportlabtocreatechartsandgraphicsinbimapandvectorformatsinadditiontoPDF.ReportlabisknownforitsabilitytogenerateaPDFfast.Infact,WikipediachoseReportlabastheirtoolofchoiceforgeneratingPDFsoftheircontent.Anytimeyouclickthe\u201cDownloadasPDF\u201dlinkontheleftsideofaWikipediapage,itusesPythonandReportlabtocreatethePDF!", "page": 4, "line": 8}
+{"text": "In this book, you will learn how to use Reportlab to create PDFs too. This book will be split into", "page": 4, "line": 9}
+{"text": "threesections.Wewillbecoveringthefollowingtopicsinthefirstsection:", "page": 4, "line": 10}
+{"text": "\u2022 Thecanvas", "page": 4, "line": 11}
+{"text": "\u2022 Drawing", "page": 4, "line": 12}
+{"text": "\u2022 Workingwithfonts", "page": 4, "line": 13}
+{"text": "\u2022 PLATYPUS", "page": 4, "line": 14}
+{"text": "\u2022 Paragraphs", "page": 4, "line": 15}
+{"text": "\u2022 Tables", "page": 4, "line": 16}
+{"text": "\u2022 OtherFlowables", "page": 4, "line": 17}
+{"text": "\u2022 Graphics", "page": 4, "line": 18}
+{"text": "\u2022 andMore!", "page": 4, "line": 19}
+{"text": "Inthesecondsection,wewilllearnaboutdataprocessing.TheideahereistotakeinseveraldifferentdataformatsandturnthemintoPDFs.Forexample,itisquitecommontoreceivedatainXMLorJSON.Butlearninghowtotakethatinformationandturnitintoareportissomethingthatisn\u2019tcoveredveryoften.Youwilllearnhowtodothathere.Intheprocesswewilldiscoverhowtomakemultipagedocumentswithparagraphsandtablesthatflowacrossthepagescorrectly.", "page": 4, "line": 20}
+{"text": "The last section of the book will cover some of the other libraries you might need when working", "page": 4, "line": 21}
+{"text": "withPDFswithPython.Inthissectionwewilllearnaboutthefollowing:", "page": 4, "line": 22}
+{"text": "\u2022 PyPDF2", "page": 4, "line": 23}
+{"text": "\u2022 pdfminer", "page": 4, "line": 24}
+{"text": "\u2022 PyFPDF", "page": 4, "line": 25}
+{"text": "Introduction 2", "page": 5, "line": 1}
+{"text": "About the Author", "page": 5, "line": 2}
+{"text": "YoumaybewonderingaboutwhoIamandwhyImightbeknowledgeableenoughaboutPythontowriteaboutit,soIthoughtI\u2019dgiveyoualittleinformationaboutmyself.IstartedprogramminginPythonintheSpringof2006forajob.MyfirstassignmentwastoportWindowsloginscriptsfromKixtarttoPython.MysecondprojectwastoportVBAcode(basicallyaGUIontopofMicrosoftOfficeproducts)toPython,whichishowIfirstgotstartedinwxPython.I\u2019vebeenusingPythoneversince,doingavariationofbackendprogramminganddesktopfrontenduserinterfacesaswellasautomatedtests.", "page": 5, "line": 3}
+{"text": "I realized that one way for me to remember how to do certain things in Python was to write", "page": 5, "line": 4}
+{"text": "about them and that\u2019s how my Python blog came about: http://www.blog.pythonlibrary.org/. As", "page": 5, "line": 5}
+{"text": "I wrote, I would receive feedback from my readers and I ended up expanding the blog to include", "page": 5, "line": 6}
+{"text": "tips, tutorials, Python news, and Python book reviews. I work regularly with Packt Publishing as", "page": 5, "line": 7}
+{"text": "a technical reviewer, which means that I get to try to check for errors in the books before they\u2019re", "page": 5, "line": 8}
+{"text": "published.IalsohavewrittenfortheDeveloperZone(DZone)andi-programmerwebsitesaswellasthePythonSoftwareFoundation.InNovember2013,DZonepublishedTheEssentialCorePythonCheatSheetthatIco-authored.Ihavealsoself-publishedthefollowingbooks:", "page": 5, "line": 9}
+{"text": "\u2022 Python101-June2014", "page": 5, "line": 10}
+{"text": "\u2022 Python201:IntermediatePython-Sept.2016", "page": 5, "line": 11}
+{"text": "\u2022 wxPythonCookbook-Dec.2016", "page": 5, "line": 12}
+{"text": "Conventions", "page": 5, "line": 13}
+{"text": "Aswithmosttechnicalbooks,thisoneincludesafewconventionsthatyouneedtobeawareof.Newtopicsandterminologywillbeinbold.Youwillalsoseesomeexamplesthatlooklikethefollowing:", "page": 5, "line": 14}
+{"text": ">>> myString = \"Welcome to Python!\"", "page": 5, "line": 15}
+{"text": "The>>>isaPythonpromptsymbol.YouwillseethisinthePythoninterpreterandinIDLE.Othercodeexampleswillbeshowninasimilarmanner,butwithoutthe>>>.MostofthebookwillbedonecreatingexamplesinregularPythonfiles,soyouwon\u2019tbeseeingthePythonpromptsymbolallthatoften.", "page": 5, "line": 16}
+{"text": "Setting up & Activating a Virtual Environment", "page": 5, "line": 17}
+{"text": "Ifyoudon\u2019twanttoaddReportLabintoyoursystem\u2019sPythoninstallation,thenyoucanuseavirtualenvironment.InPython2.x-3.2,youwouldneedtoinstallapackagecalledvirtualenvtocreateavirtualenvironmentforPython.TheideaisthatitwillcreateafolderwithacopyofPythonandpip.", "page": 5, "line": 18}
+{"text": "Introduction 3", "page": 6, "line": 1}
+{"text": "You activate the virtual environment, run the virtual pip and install whatever you need to. Python", "page": 6, "line": 2}
+{"text": "3.3 added a module to Python called venv that does the same thing as the virtualenv package, for", "page": 6, "line": 3}
+{"text": "themostpart.", "page": 6, "line": 4}
+{"text": "Herearesomelinksonhowallthatworks:", "page": 6, "line": 5}
+{"text": "\u2022 https://docs.python.org/3/library/venv.html(Python3only)", "page": 6, "line": 6}
+{"text": "\u2022 https://pypi.python.org/pypi/virtualenv(Python2and3)", "page": 6, "line": 7}
+{"text": "When you are using a Python Virtual Environment, you will need to first activate it. Activation of", "page": 6, "line": 8}
+{"text": "avirtualenvironmentislikestartingavirtualmachineupinVirtualBoxorVMWare,exceptthatinthiscase,it\u2019sjustaPythonVirtualEnvironmentinsteadofanentireoperatingsystem.", "page": 6, "line": 9}
+{"text": "Creating a virtual sandbox with the virtualenv package is quite easy. On Mac and Linux, all you", "page": 6, "line": 10}
+{"text": "needtodoisthefollowinginyourterminalorcommandprompt:", "page": 6, "line": 11}
+{"text": "virtualenv FOLDER_NAME", "page": 6, "line": 12}
+{"text": "To activate a virtual environment on Linux or Mac, you just need to change directories to your", "page": 6, "line": 13}
+{"text": "newly created folder. Inside that folder should be another folder called bin along with a few other", "page": 6, "line": 14}
+{"text": "foldersandafileortwo.Nowyoucanrunthefollowingcommand:", "page": 6, "line": 15}
+{"text": "source bin/activate", "page": 6, "line": 16}
+{"text": "OnWindows,thingsareslightlydifferent.Tocreateavirtualenvironment,youwillprobablyneedtousethefullpathtovirtualenv:", "page": 6, "line": 17}
+{"text": "c:\\Python27\\Scripts\\virtualenv.exe", "page": 6, "line": 18}
+{"text": "You should still change directories into your new folder, but instead of bin, there will be a Scripts", "page": 6, "line": 19}
+{"text": "folderthatcanrunactivateoutof:", "page": 6, "line": 20}
+{"text": "Scripts\\activate", "page": 6, "line": 21}
+{"text": "Onceactivated,youcaninstallanyother3rdpartyPythonpackage.", "page": 6, "line": 22}
+{"text": "Note: It is recommended that you install all 3rd party packages, such as ReportLab or Pillow, in a", "page": 6, "line": 23}
+{"text": "PythonVirtualEnvironmentorauserfolder.ThispreventsyoufrominstallingalotofcruftinyoursystemPythoninstallation.", "page": 6, "line": 24}
+{"text": "Iwouldalsoliketomentionthatpipsupportsa\u2013userflagthattellsittoinstallthepackagejustforthecurrentuseriftheplatformsupportsit.Thereisalsoan\u2013updateflag(orjust-U)thatyouanusetoupdateapackage.Youcanusethisflagasfollows:", "page": 6, "line": 25}
+{"text": "Introduction 4", "page": 7, "line": 1}
+{"text": "python -m pip install PACKAGE_NAME --upgrade", "page": 7, "line": 2}
+{"text": "While youcan also use pip install PACKAGE_NAME,it is nowbecoming a recommended practice", "page": 7, "line": 3}
+{"text": "tousethepython-mapproach.WhatthisdoesdifferentlyisthatituseswhateverPythonisonyourpathandinstallstothatPythonversion.The-mflagtellsPythontoloadorrunamodulewhichinthiscaseispip.ThiscanbeimportantwhenyouhavemultipleversionsofPythoninstalledandyoudon\u2019tknowwhichversionofPythonpipitselfwillinstallto.Thus,byusingthepython-mpipapproach,youknowthatitwillinstalltothePythonthatismappedtoyour\u201cpython\u201dcommand.", "page": 7, "line": 4}
+{"text": "Nowlet\u2019slearnwhatweneedtoinstalltogetReportLabworking!", "page": 7, "line": 5}
+{"text": "Dependencies", "page": 7, "line": 6}
+{"text": "You will need the Python language installed on your maching to use ReportLab. Python is pre-", "page": 7, "line": 7}
+{"text": "installed on Mac OS and most Linux distribututions. Reportlab 3 works with both Python 2.7 and", "page": 7, "line": 8}
+{"text": "Python 3.3+. You can get Python at https://www.python.org/. They have detailed instructions for", "page": 7, "line": 9}
+{"text": "installingandconfiguringPythonaswellasbuildingPythonshouldyouneedtodoso.", "page": 7, "line": 10}
+{"text": "ReportLab depends on the Python Imaging Library for adding images to PDFs. The Python", "page": 7, "line": 11}
+{"text": "Imaging Library itself hasn\u2019t been maintained in years, but you can use the Pillow (https://pillow.", "page": 7, "line": 12}
+{"text": "readthedocs.io/en/latest/) package instead. Pillow is a fork of the Python Imaging Library that", "page": 7, "line": 13}
+{"text": "supportsPython2andPython3andhaslotsofnewenhancementsthattheoriginalpackagedidn\u2019thave.Youcaninstallitwithpipaswell:", "page": 7, "line": 14}
+{"text": "python -m pip install pillow", "page": 7, "line": 15}
+{"text": "You may need to run pip as root or Administer depending on where your Python is installed or if", "page": 7, "line": 16}
+{"text": "you are installing to a virtualenv. You may find that you enjoy Pillow so much that you want to", "page": 7, "line": 17}
+{"text": "installitinyoursystemPythoninadditiontoyourvirtualenvironment.", "page": 7, "line": 18}
+{"text": "WearereadytomoveonandlearnhowtoinstallReportLab!", "page": 7, "line": 19}
+{"text": "Installation", "page": 7, "line": 20}
+{"text": "Reportlab3workswithbothPython2.7andPython3.3+.ThisbookwillbefocusingonusingPython3andReportLab3.x,butyoucaninstallReportLab3thesamewayinbothversionsofPythonusingpip:", "page": 7, "line": 21}
+{"text": "python -m pip install reportlab", "page": 7, "line": 22}
+{"text": "Introduction 5", "page": 8, "line": 1}
+{"text": "If you are using an older version of Python such as Python 2.6 or less, then you will need to use", "page": 8, "line": 2}
+{"text": "ReportLab 2.x. These older versions of ReportLab have *.exe installers for Windows or a tarball for", "page": 8, "line": 3}
+{"text": "other operating systems. If you happen to run a ReportLab exe installer, it will install to Python\u2019s", "page": 8, "line": 4}
+{"text": "systemenvironmentandnotyourvirtualenvironment.", "page": 8, "line": 5}
+{"text": "If you run into issues installing ReportLab, please go to their website and read the documentation", "page": 8, "line": 6}
+{"text": "onthesubjectathttps://www.reportlab.com/", "page": 8, "line": 7}
+{"text": "NowyoushouldbereadytouseReportLab!", "page": 8, "line": 8}
+{"text": "Configuration", "page": 8, "line": 9}
+{"text": "ReportLab supports a few options that you can configure globally on your machine or server. This", "page": 8, "line": 10}
+{"text": "configurationfilecanbefoundinthefollowingfile:reportlab/rl_settings.py(ex.C:\\PythonXX\\Lib\\site-packages\\reportlab).Thereareafewdozenoptionsthatarecommentedinthesource.Here\u2019sasampling:", "page": 8, "line": 11}
+{"text": "\u2022 verbose-Arangeofintegervaluesthatcanbeusedtocontroldiagnosticoutput", "page": 8, "line": 12}
+{"text": "\u2022 shapeChecking-Defaultsto1.Setto0toturnoffmosterrorcheckinginReportLab\u2019sgraphicsmodules", "page": 8, "line": 13}
+{"text": "\u2022 defaultEncoding-WinAnsiEncoding(default)orMacRomanEncoding", "page": 8, "line": 14}
+{"text": "\u2022 defaultPageSize-A4isthedefault,butyoucanchangeittosomethingelse,suchasletterorlegal", "page": 8, "line": 15}
+{"text": "\u2022 pageCompression-Whatcompressionleveltouse.Thedocumentationdoesn\u2019tsaywhatvaluescanbeusedthough", "page": 8, "line": 16}
+{"text": "\u2022 showBoundary-Defaultsto0,butcanbesetto1togetboundarylinesdrawn", "page": 8, "line": 17}
+{"text": "\u2022 T1SearchPath-APythonlistofstringsthatarepathstoT1Fontfonts", "page": 8, "line": 18}
+{"text": "\u2022 TTFSearchPath-APythonlistofstringsthatarepathstoTrueTypefonts", "page": 8, "line": 19}
+{"text": "As I said, there are a lot of other settings that you can modify in that Python script. I highly", "page": 8, "line": 20}
+{"text": "recommend opening it up and reading through the various options to see if there\u2019s anything that", "page": 8, "line": 21}
+{"text": "youwillneedtomodifyforyourenvironment.Infact,youcandosoinyourPythoninterpreterbydoingthefollowing:", "page": 8, "line": 22}
+{"text": ">>> from reportlab import rl_settings", "page": 8, "line": 23}
+{"text": ">>> rl_settings.verbose", "page": 8, "line": 24}
+{"text": "0", "page": 8, "line": 25}
+{"text": ">>> rl_settings.shapeChecking", "page": 8, "line": 26}
+{"text": "1", "page": 8, "line": 27}
+{"text": "Youcannoweasilycheckouteachofthesettingsinaninteractivemanner.", "page": 8, "line": 28}
+{"text": "Introduction 6", "page": 9, "line": 1}
+{"text": "Reader Feedback", "page": 9, "line": 2}
+{"text": "Iwelcomeyourfeedback.Ifyou\u2019dliketoletmeknowwhatyouthoughtofthisbook,youcansendcommentstothefollowingemailaddress:", "page": 9, "line": 3}
+{"text": "comments@pythonlibrary.org", "page": 9, "line": 4}
+{"text": "Errata", "page": 9, "line": 5}
+{"text": "I try my best not to publish errors in my writings, but it happens from time to time. If you happen", "page": 9, "line": 6}
+{"text": "toseeanerrorinthisbook,feelfreetoletmeknowbyemailingmeatthefollowing:", "page": 9, "line": 7}
+{"text": "errata@pythonlibrary.org", "page": 9, "line": 8}
+{"text": "Code Examples", "page": 9, "line": 9}
+{"text": "CodefromthebookcanbedownloadedfromGithubatthefollowingaddress:", "page": 9, "line": 10}
+{"text": "\u2022 https://github.com/driscollis/reportlabbookcode", "page": 9, "line": 11}
+{"text": "Here\u2019sanalternateshortlinktotheaboveaswell:", "page": 9, "line": 12}
+{"text": "\u2022 http://bit.ly/2nc7sbP", "page": 9, "line": 13}
+{"text": "Now,let\u2019sgetstarted!", "page": 9, "line": 14}
+{"text": "Chapter 1 - Getting Started with", "page": 10, "line": 1}
+{"text": "Reportlab", "page": 10, "line": 2}
+{"text": "ReportLab is a very powerful library. With a little effort, you can make pretty much any layout", "page": 10, "line": 3}
+{"text": "that you can think of. I have used it to replicate many complex page layouts over the years. In this", "page": 10, "line": 4}
+{"text": "chapter we will be learning how to use ReportLab\u2019s pdfgen package. You will discover how to do", "page": 10, "line": 5}
+{"text": "thefollowing:", "page": 10, "line": 6}
+{"text": "\u2022 Drawtext", "page": 10, "line": 7}
+{"text": "\u2022 Learnaboutfontsandtextcolors", "page": 10, "line": 8}
+{"text": "\u2022 Creatingatextobject", "page": 10, "line": 9}
+{"text": "\u2022 Drawlines", "page": 10, "line": 10}
+{"text": "\u2022 Drawvariousshapes", "page": 10, "line": 11}
+{"text": "Thepdfgenpackageisverylowlevel.Youwillbedrawingor\u201cpainting\u201donacanvastocreateyourPDF.Thecanvasgetsimportedfromthepdfgenpackage.Whenyougotopaintonyourcanvas,youwillneedtospecifyX/YcoordinatesthattellReportLabwheretostartpainting.Thedefaultis(0,0)whoseoriginisatthelowestleftcornerofthepage.Manydesktopuserinterfacekits,suchaswxPython,Tkinter,etc,alsohavethisconcept.YoucanplacebuttonsabsolutelyinmanyofthesekitsusingX/Ycoordinatesaswell.Thisallowsforverypreciseplacementoftheelementsthatyouareaddingtothepage.", "page": 10, "line": 12}
+{"text": "TheotheritemthatIneedtomakementionofisthatwhenyouarepositioninganiteminaPDF,youarepositioningbythenumberofpointsyouarefromtheorigin.It\u2019spoints,notpixelsormillimetersorinches.Points!Let\u2019stakealookathowmanypointsareonalettersizedpage:", "page": 10, "line": 13}
+{"text": ">>> from reportlab.lib.pagesizes import letter", "page": 10, "line": 14}
+{"text": ">>> letter", "page": 10, "line": 15}
+{"text": "(612.0, 792.0)", "page": 10, "line": 16}
+{"text": "Here we learn that a letter is 612 points wide and 792 points high. Let\u2019s find out how many points", "page": 10, "line": 17}
+{"text": "areinaninchandamillimeter,respectively:", "page": 10, "line": 18}
+{"text": "Chapter1-GettingStartedwithReportlab 8", "page": 11, "line": 1}
+{"text": ">>> from reportlab.lib.units import inch", "page": 11, "line": 2}
+{"text": ">>> inch", "page": 11, "line": 3}
+{"text": "72.0", "page": 11, "line": 4}
+{"text": ">>> from reportlab.lib.units import mm", "page": 11, "line": 5}
+{"text": ">>> mm", "page": 11, "line": 6}
+{"text": "2.834645669291339", "page": 11, "line": 7}
+{"text": "This information will help us position our drawings on our painting. At this point, we\u2019re ready to", "page": 11, "line": 8}
+{"text": "createaPDF!", "page": 11, "line": 9}
+{"text": "The Canvas Object", "page": 11, "line": 10}
+{"text": "Thecanvasobjectlivesinthepdfgenpackage.Let\u2019simportitandpaintsometext:", "page": 11, "line": 11}
+{"text": "# hello_reportlab.py", "page": 11, "line": 12}
+{"text": "from reportlab.pdfgen import canvas", "page": 11, "line": 13}
+{"text": "c = canvas.Canvas(\"hello.pdf\")", "page": 11, "line": 14}
+{"text": "c.drawString(100, 100, \"Welcome to Reportlab!\")", "page": 11, "line": 15}
+{"text": "c.showPage()", "page": 11, "line": 16}
+{"text": "c.save()", "page": 11, "line": 17}
+{"text": "In this example, we import the canvas object and then instantiate a Canvas object. You will note", "page": 11, "line": 18}
+{"text": "thattheonlyrequirementargumentisafilenameorpath.NextwecalldrawString()onourcanvasobjectandtellittostartdrawingthestring100pointstotherightoftheoriginand100pointsup.AfterthatwecallshowPage()method.TheshowPage()methodwillsavethecurrentpageofthecanvas.It\u2019sactuallynotrequired,butitisrecommended.TheshowPage()methodalsoendsthecurrentpage.IfyoudrawanotherstringorsomeotherelementaftercallingshowPage(),thatobjectwillbedrawntoanewpage.Finallywecallthecanvasobject\u2019ssave()method,whichsavethedocumenttodisk.NowwecanopenitupandseewhatourPDFlookslike:", "page": 11, "line": 19}
+{"text": "Chapter1-GettingStartedwithReportlab 9", "page": 12, "line": 1}
+{"text": "Fig.1-1:WelcometoReportLab", "page": 12, "line": 2}
+{"text": "What you might notice is that our text is near the bottom of the document. The reason for this is", "page": 12, "line": 3}
+{"text": "thattheorigin,(0,0),isthebottomleftcornerofthedocument.SowhenwetoldReportLabtopaintourtext,weweretellingittostartpainting100pointsfromtheleft-handsideand100pointsfromthebottom.ThisisincontrasttocreatingauserinterfaceinTkinterorwxPythonwheretooriginisthetopleft.", "page": 12, "line": 4}
+{"text": "Alsonotethatsincewedidn\u2019tspecifyapagesize,itdefaultstowhateverisintheReportLabconfig,whichisusuallyA4.Therearesomecommonpagesizesthatcanbefoundinreportlab.lib.pagesizes.", "page": 12, "line": 5}
+{"text": "Let\u2019slookattheCanvas\u2019sconstructortoseewhatittakesforarguments:", "page": 12, "line": 6}
+{"text": "Chapter1-GettingStartedwithReportlab 10", "page": 13, "line": 1}
+{"text": "def __init__(self,filename,", "page": 13, "line": 2}
+{"text": "pagesize=None,", "page": 13, "line": 3}
+{"text": "bottomup = 1,", "page": 13, "line": 4}
+{"text": "pageCompression=None,", "page": 13, "line": 5}
+{"text": "invariant = None,", "page": 13, "line": 6}
+{"text": "verbosity=0,", "page": 13, "line": 7}
+{"text": "encrypt=None,", "page": 13, "line": 8}
+{"text": "cropMarks=None,", "page": 13, "line": 9}
+{"text": "pdfVersion=None,", "page": 13, "line": 10}
+{"text": "enforceColorSpace=None,", "page": 13, "line": 11}
+{"text": "):", "page": 13, "line": 12}
+{"text": "Here we can see that we can pass in the pagesize as an argument. The pagesize is actually a tuple", "page": 13, "line": 13}
+{"text": "ofwidthandheightinpoints.Ifyouwanttochangetheoriginfromthedefaultofbottomleft,thenyoucansetthebottomupargumentto0,whichwillchangetheorigintothetopleft.", "page": 13, "line": 14}
+{"text": "ThepageCompressionargumentisdefaultedtozerooroff.BasicallyitwilltellReportLabwhetherornottocompresseachpage.Whencompressionisenabled,thefilegenerationprocessisslowed.IfyourworkneedsyourPDFstobegeneratedasquicklyaspossible,thenyou\u2019llwanttokeepthedefaultofzero.Howeverifspeedisn\u2019taconcernandyou\u2019dliketouselessdiskspace,thenyoucanturnonpagecompression.NotethatimagesinPDFswillalwaysbecompressed,sotheprimaryusecaseforturningonpagecompressioniswhenyouhaveahugeamountoftextorlotsofvectorgraphicsperpage.", "page": 13, "line": 15}
+{"text": "ReportLab\u2019s User Guide makes no mention of what the invariant argument is used for, so I took a", "page": 13, "line": 16}
+{"text": "look at the source code. According to the source, it produces repeatable, identical PDFs with same", "page": 13, "line": 17}
+{"text": "timestamp info (for regression testing). I have never seen anyone use this argument in their code", "page": 13, "line": 18}
+{"text": "andsincethesourcesaysitisforregressiontesting,Ithinkwecansafelyignoreit.", "page": 13, "line": 19}
+{"text": "The next argument isverbosity, which is used for logging levels. At zero (0), ReportLab will allow", "page": 13, "line": 20}
+{"text": "other applications to capture the PDF from standard output. If you set it to one (1), a confirmation", "page": 13, "line": 21}
+{"text": "message will be printed out every time a PDF is created. There may be additional levels added, but", "page": 13, "line": 22}
+{"text": "atthetimeofwriting,theseweretheonlytwodocumented.", "page": 13, "line": 23}
+{"text": "The encrypt argument is used to determine if the PDF should be encrypted as well as how it is", "page": 13, "line": 24}
+{"text": "encrypted. The default is obviously None, which means no encryption at all. If you pass a string", "page": 13, "line": 25}
+{"text": "to encrypt, that string will be the password for the PDF. If you want to encrypt the PDF, then you", "page": 13, "line": 26}
+{"text": "will need to create an instance of reportlab.lib.pdfencrypt.StandardEncryption and pass that to", "page": 13, "line": 27}
+{"text": "theencryptargument.", "page": 13, "line": 28}
+{"text": "ThecropMarksargumentcanbesettoTrue,Falseortoanobject.Cropmarksareusedbyprintinghousestoknowwheretocropapage.WhenyousetcropMarkstoTrueinReportLab,thepagewillbecome3mmlargerthanwhatyousetthepagesizetoandaddsomecropmarkstothecorners.TheobjectthatyoucanpasstocropMarkscontainsthefollowingparameters:borderWidth,markColor,markWidthandmarkLength.Theobjectallowsyoutocustomizethecropmarks.", "page": 13, "line": 29}
+{"text": "Chapter1-GettingStartedwithReportlab 11", "page": 14, "line": 1}
+{"text": "ThepdfVersionargumentisusedforensuringthatthePDFversionisgreaterthanorequaltowhatwaspassedin.CurrentlyReportLabsupportsversions1-4.", "page": 14, "line": 2}
+{"text": "Finally, the enforceColorSpace argument is used to enforce appropriate color settings within the", "page": 14, "line": 3}
+{"text": "PDF.Youcansetittooneofthefollowing:", "page": 14, "line": 4}
+{"text": "\u2022 cmyk", "page": 14, "line": 5}
+{"text": "\u2022 rgb", "page": 14, "line": 6}
+{"text": "\u2022 sep", "page": 14, "line": 7}
+{"text": "\u2022 sep_black", "page": 14, "line": 8}
+{"text": "\u2022 sep_cmyk", "page": 14, "line": 9}
+{"text": "When one of these is set, a standard _PDFColorSetter callable will be used to do the color", "page": 14, "line": 10}
+{"text": "enforcement.Youcanalsopassinacallableforcolorenforcement.", "page": 14, "line": 11}
+{"text": "Let\u2019s go back to our original example and update it just a bit. Now as I mentioned earlier, in", "page": 14, "line": 12}
+{"text": "ReportLab you can position your elements (text, images, etc) using points. But thinking in points", "page": 14, "line": 13}
+{"text": "is kind of hard when we are used to using millimeters or inches. So I found a clever function we", "page": 14, "line": 14}
+{"text": "can use to help us on StackOverflow (http://stackoverflow.com/questions/4726011/wrap-text-in-a-", "page": 14, "line": 15}
+{"text": "table-reportlab):", "page": 14, "line": 16}
+{"text": "def coord(x, y, height, unit=1):", "page": 14, "line": 17}
+{"text": "x, y = x * unit, height - y * unit", "page": 14, "line": 18}
+{"text": "return x, y", "page": 14, "line": 19}
+{"text": "Thisfunctionrequiresyourxandycoordinatesaswellastheheightofthepage.Youcanalsopassinaunitsize.Thiswillallowyoutodothefollowing:", "page": 14, "line": 20}
+{"text": "# canvas_coords.py", "page": 14, "line": 21}
+{"text": "from reportlab.pdfgen import canvas", "page": 14, "line": 22}
+{"text": "from reportlab.lib.pagesizes import letter", "page": 14, "line": 23}
+{"text": "from reportlab.lib.units import mm", "page": 14, "line": 24}
+{"text": "def coord(x, y, height, unit=1):", "page": 14, "line": 25}
+{"text": "x, y = x * unit, height - y * unit", "page": 14, "line": 26}
+{"text": "return x, y", "page": 14, "line": 27}
+{"text": "c = canvas.Canvas(\"hello.pdf\", pagesize=letter)", "page": 14, "line": 28}
+{"text": "width, height = letter", "page": 14, "line": 29}
+{"text": "c.drawString(*coord(15, 20, height, mm), text=\"Welcome to Reportlab!\")", "page": 14, "line": 30}
+{"text": "c.showPage()", "page": 14, "line": 31}
+{"text": "c.save()", "page": 14, "line": 32}
+{"text": "Chapter1-GettingStartedwithReportlab 12", "page": 15, "line": 1}
+{"text": "Inthisexamplewepassthecoordfunctionthexandycoordinates,butwetellittousemillimetersasourunit.Soinsteadofthinkinginpoints,wearetellingReportLabthatwewantthetexttostart15mmfromtheleftand20mmfromthetopofthepage.Yes,youreadthatright.Whenweusethecoordfunction,itusestheheighttoswaptheorigin\u2019syfromthebottomtothetop.IfyouhadsetyourCanvas\u2019sbottomUpparametertozero,thenthisfunctionwouldn\u2019tworkasexpected.Infact,wecouldsimplifythecoordfunctiontojustthefollowing:", "page": 15, "line": 2}
+{"text": "def coord(x, y, unit=1):", "page": 15, "line": 3}
+{"text": "x, y = x * unit, y * unit", "page": 15, "line": 4}
+{"text": "return x, y", "page": 15, "line": 5}
+{"text": "Nowwecanupdatethepreviousexamplelikethis:", "page": 15, "line": 6}
+{"text": "# canvas_coords2.py", "page": 15, "line": 7}
+{"text": "from reportlab.pdfgen import canvas", "page": 15, "line": 8}
+{"text": "from reportlab.lib.units import mm", "page": 15, "line": 9}
+{"text": "def coord(x, y, unit=1):", "page": 15, "line": 10}
+{"text": "x, y = x * unit, y * unit", "page": 15, "line": 11}
+{"text": "return x, y", "page": 15, "line": 12}
+{"text": "c = canvas.Canvas(\"hello.pdf\", bottomup=0)", "page": 15, "line": 13}
+{"text": "c.drawString(*coord(15, 20, mm), text=\"Welcome to Reportlab!\")", "page": 15, "line": 14}
+{"text": "c.showPage()", "page": 15, "line": 15}
+{"text": "c.save()", "page": 15, "line": 16}
+{"text": "That seems pretty straight-forward. You should take a minute or two and play around with both", "page": 15, "line": 17}
+{"text": "examples. Try changing the x and y coordinates that you pass in. Then try changing the text too", "page": 15, "line": 18}
+{"text": "andseewhathappens!", "page": 15, "line": 19}
+{"text": "Canvas Methods", "page": 15, "line": 20}
+{"text": "The canvas object has many methods. Let\u2019s learn how we can use some of them to make our PDF", "page": 15, "line": 21}
+{"text": "documents more interesting. One of the easiest methods to use setFont, which will let you use a", "page": 15, "line": 22}
+{"text": "PostScriptfontnametospecifywhatfontyouwanttouse.Hereisasimpleexample:", "page": 15, "line": 23}
+{"text": "Chapter1-GettingStartedwithReportlab 13", "page": 16, "line": 1}
+{"text": "# font_demo.py", "page": 16, "line": 2}
+{"text": "from reportlab.lib.pagesizes import letter", "page": 16, "line": 3}
+{"text": "from reportlab.pdfgen import canvas", "page": 16, "line": 4}
+{"text": "def font_demo(my_canvas, fonts):", "page": 16, "line": 5}
+{"text": "pos_y = 750", "page": 16, "line": 6}
+{"text": "for font in fonts:", "page": 16, "line": 7}
+{"text": "my_canvas.setFont(font, 12)", "page": 16, "line": 8}
+{"text": "my_canvas.drawString(30, pos_y, font)", "page": 16, "line": 9}
+{"text": "pos_y -= 10", "page": 16, "line": 10}
+{"text": "if __name__ == '__main__':", "page": 16, "line": 11}
+{"text": "my_canvas = canvas.Canvas(\"fonts.pdf\",", "page": 16, "line": 12}
+{"text": "pagesize=letter)", "page": 16, "line": 13}
+{"text": "fonts = my_canvas.getAvailableFonts()", "page": 16, "line": 14}
+{"text": "font_demo(my_canvas, fonts)", "page": 16, "line": 15}
+{"text": "my_canvas.save()", "page": 16, "line": 16}
+{"text": "To make things a bit more interesting, we will use the getAvailableFonts canvas method to grab", "page": 16, "line": 17}
+{"text": "all the available fonts that we can use on the system that the code is ran on. Then we will pass the", "page": 16, "line": 18}
+{"text": "canvas object and the list of font names to our font_demo function. Here we loop over the font", "page": 16, "line": 19}
+{"text": "names,setthefontandcallthedrawStringmethodtodraweachfont\u2019snametothepage.YouwillalsonotethatwehavesetavariableforthestartingYpositionthatwethendecrementby10eachtimeweloopthrough.Thisistomakeeachtextstringdrawonaseparateline.Ifwedidn\u2019tdothis,thestringswouldwriteontopofeachotherandyouwouldendupwithamess.", "page": 16, "line": 20}
+{"text": "Hereistheresultwhenyourunthefontdemo:", "page": 16, "line": 21}
+{"text": "Chapter1-GettingStartedwithReportlab 14", "page": 17, "line": 1}
+{"text": "Fig.1-2:AvailablefontsinReportLab", "page": 17, "line": 2}
+{"text": "If you want to change the font color using a canvas method, then you would want to look at", "page": 17, "line": 3}
+{"text": "setFillColor or one of its related methods. As long as you call that before you draw the string,", "page": 17, "line": 4}
+{"text": "thecolorofthetextwillchangeaswell.", "page": 17, "line": 5}
+{"text": "Another fun thing you can is use the canvas\u2019s rotate method to draw text at different angles. We", "page": 17, "line": 6}
+{"text": "willalsolearnhowtousethetranslatemethod.Let\u2019stakealookatanexample:", "page": 17, "line": 7}
+{"text": "Chapter1-GettingStartedwithReportlab 15", "page": 18, "line": 1}
+{"text": "# rotating_demo.py", "page": 18, "line": 2}
+{"text": "from reportlab.lib.pagesizes import letter", "page": 18, "line": 3}
+{"text": "from reportlab.lib.units import inch", "page": 18, "line": 4}
+{"text": "from reportlab.pdfgen import canvas", "page": 18, "line": 5}
+{"text": "def rotate_demo():", "page": 18, "line": 6}
+{"text": "my_canvas = canvas.Canvas(\"rotated.pdf\",", "page": 18, "line": 7}
+{"text": "pagesize=letter)", "page": 18, "line": 8}
+{"text": "my_canvas.translate(inch, inch)", "page": 18, "line": 9}
+{"text": "my_canvas.setFont('Helvetica', 14)", "page": 18, "line": 10}
+{"text": "my_canvas.drawString(inch, inch, 'Normal')", "page": 18, "line": 11}
+{"text": "my_canvas.line(inch, inch, inch+100, inch)", "page": 18, "line": 12}
+{"text": "my_canvas.rotate(45)", "page": 18, "line": 13}
+{"text": "my_canvas.drawString(inch, -inch, '45 degrees')", "page": 18, "line": 14}
+{"text": "my_canvas.line(inch, inch, inch+100, inch)", "page": 18, "line": 15}
+{"text": "my_canvas.rotate(45)", "page": 18, "line": 16}
+{"text": "my_canvas.drawString(inch, -inch, '90 degrees')", "page": 18, "line": 17}
+{"text": "my_canvas.line(inch, inch, inch+100, inch)", "page": 18, "line": 18}
+{"text": "my_canvas.save()", "page": 18, "line": 19}
+{"text": "if __name__ == '__main__':", "page": 18, "line": 20}
+{"text": "rotate_demo()", "page": 18, "line": 21}
+{"text": "Hereweusethetranslatemethodtosetouroriginfromthebottomlefttoaninchfromthebottomleftandaninchup.Thenwesetoutfontfaceandfontsize.Nextwriteoutsometextnormallyandthenwerotatethecoordinatesystemitself45degreesbeforewedrawastring.AccordingtotheReportLabuserguide,youwillwanttospecifytheycoordinateinthenegativesincethecoordinatesystemisnowinarotatedstate.Ifyoudon\u2019tdothat,yourstringwillbedrawnoutsidethepage\u2019sboundaryandyouwon\u2019tseeit.Finallywerotatethecoordinatesystemanother45degreesforatotalof90degrees,writeoutonelaststringanddrawthelastline.", "page": 18, "line": 22}
+{"text": "Itisinterestingtolookathowthelinesmovedeachtimewerotatedthecoordinatesystem.Youcanseethattheoriginofthelastlinemovedallthewaytotheveryleft-handedgeofthepage.", "page": 18, "line": 23}
+{"text": "HereistheresultwhenIranthiscode:", "page": 18, "line": 24}
+{"text": "Chapter1-GettingStartedwithReportlab 16", "page": 19, "line": 1}
+{"text": "Fig.1-3:Rotatedtext", "page": 19, "line": 2}
+{"text": "Nowlet\u2019stakeamomentlearnaboutalignment.", "page": 19, "line": 3}
+{"text": "String Alignment", "page": 19, "line": 4}
+{"text": "ThecanvassupportsmorestringmethodsthanjusttheplaindrawStringmethod.YoucanalsousedrawRightString,whichwilldrawyourstringright-alignedtothex-coordinate.YoucanalsousedrawAlignedString,whichwilldrawastringalignedtothefirstpivotcharacter,whichdefaultstotheperiod.Thisisusefulifyouwanttolineupaseriesoffloatingpointnumbersonthepage.Finally,thereisthedrawCentredStringmethod,whichwilldrawastringthatis\u201ccentred\u201donthex-coordinate.Let\u2019stakealook:", "page": 19, "line": 5}
+{"text": "# string_alignment.py", "page": 19, "line": 6}
+{"text": "from reportlab.pdfgen import canvas", "page": 19, "line": 7}
+{"text": "from reportlab.lib.pagesizes import letter", "page": 19, "line": 8}
+{"text": "def string_alignment(my_canvas):", "page": 19, "line": 9}
+{"text": "width, height = letter", "page": 19, "line": 10}
+{"text": "my_canvas.drawString(80, 700, 'Standard String')", "page": 19, "line": 11}
+{"text": "my_canvas.drawRightString(80, 680, 'Right String')", "page": 19, "line": 12}
+{"text": "numbers = [987.15, 42, -1,234.56, (456.78)]", "page": 19, "line": 13}
+{"text": "y = 650", "page": 19, "line": 14}
+{"text": "Chapter1-GettingStartedwithReportlab 17", "page": 20, "line": 1}
+{"text": "for number in numbers:", "page": 20, "line": 2}
+{"text": "my_canvas.drawAlignedString(80, y, str(number))", "page": 20, "line": 3}
+{"text": "y -= 20", "page": 20, "line": 4}
+{"text": "my_canvas.drawCentredString(width / 2, 550, 'Centered String')", "page": 20, "line": 5}
+{"text": "my_canvas.showPage()", "page": 20, "line": 6}
+{"text": "if __name__ == '__main__':", "page": 20, "line": 7}
+{"text": "my_canvas = canvas.Canvas(\"string_alignment.pdf\")", "page": 20, "line": 8}
+{"text": "string_alignment(my_canvas)", "page": 20, "line": 9}
+{"text": "my_canvas.save()", "page": 20, "line": 10}
+{"text": "When you run this code, you will quickly see how each f these strings get aligned. Personally I", "page": 20, "line": 11}
+{"text": "thoughtthedrawAlignedStringmethodwasthemostinteresting,buttheothersarecertainlyhandyintheirownright.Hereistheresultofrunningthecode:", "page": 20, "line": 12}
+{"text": "Fig.1-4:StringAlignment", "page": 20, "line": 13}
+{"text": "Thenextcanvasmethodswewilllearnaboutarehowtodrawlines,rectanglesandgrids!", "page": 20, "line": 14}
+{"text": "Drawing lines on the canvas", "page": 20, "line": 15}
+{"text": "Drawing a line in ReportLab is actually quite easy. Once you get used to it, you can actually", "page": 20, "line": 16}
+{"text": "create very complex drawings in your documents, especially when you combine it with some of", "page": 20, "line": 17}
+{"text": "Chapter1-GettingStartedwithReportlab 18", "page": 21, "line": 1}
+{"text": "ReportLab\u2019s other features. The method to draw a straight line is simplyline. Let\u2019s take a look at a", "page": 21, "line": 2}
+{"text": "simpleexample:", "page": 21, "line": 3}
+{"text": "# drawing_lines.py", "page": 21, "line": 4}
+{"text": "from reportlab.lib.pagesizes import letter", "page": 21, "line": 5}
+{"text": "from reportlab.pdfgen import canvas", "page": 21, "line": 6}
+{"text": "def draw_lines(my_canvas):", "page": 21, "line": 7}
+{"text": "my_canvas.setLineWidth(.3)", "page": 21, "line": 8}
+{"text": "start_y = 710", "page": 21, "line": 9}
+{"text": "my_canvas.line(30, start_y, 580, start_y)", "page": 21, "line": 10}
+{"text": "for x in range(10):", "page": 21, "line": 11}
+{"text": "start_y -= 10", "page": 21, "line": 12}
+{"text": "my_canvas.line(30, start_y, 580, start_y)", "page": 21, "line": 13}
+{"text": "if __name__ == '__main__':", "page": 21, "line": 14}
+{"text": "my_canvas = canvas.Canvas(\"lines.pdf\", pagesize=letter)", "page": 21, "line": 15}
+{"text": "draw_lines(my_canvas)", "page": 21, "line": 16}
+{"text": "my_canvas.save()", "page": 21, "line": 17}
+{"text": "Here we create a simple draw_lines function that accepts a canvas object as its sole parameter.", "page": 21, "line": 18}
+{"text": "Thenwesettheline\u2019swidthviathesetLineWidthmethod.Finallywecreateasingleline.Youwillnoticethatthelinemethodacceptsfourarguments:x1,y1,x2,y2.Thesearethebeginningxandycoordinatesaswellastheendingxandycoordinates.Weaddanother10linesbyusingaforloop.Ifyourunthiscode,youroutputwilllooksomethinglikethis:", "page": 21, "line": 19}
+{"text": "Chapter1-GettingStartedwithReportlab 19", "page": 22, "line": 1}
+{"text": "Fig.1-5:Drawinglinesonthecanvas", "page": 22, "line": 2}
+{"text": "The canvas supports several other drawing operations. For example, you can also draw rectangles,", "page": 22, "line": 3}
+{"text": "wedgesandcircles.Here\u2019sasimpledemo:", "page": 22, "line": 4}
+{"text": "Chapter1-GettingStartedwithReportlab 20", "page": 23, "line": 1}
+{"text": "# drawing_polygons.py", "page": 23, "line": 2}
+{"text": "from reportlab.lib.pagesizes import letter", "page": 23, "line": 3}
+{"text": "from reportlab.pdfgen import canvas", "page": 23, "line": 4}
+{"text": "def draw_shapes():", "page": 23, "line": 5}
+{"text": "c = canvas.Canvas(\"draw_other.pdf\")", "page": 23, "line": 6}
+{"text": "c.setStrokeColorRGB(0.2, 0.5, 0.3)", "page": 23, "line": 7}
+{"text": "c.rect(10, 740, 100, 80, stroke=1, fill=0)", "page": 23, "line": 8}
+{"text": "c.ellipse(10, 680, 100, 630, stroke=1, fill=1)", "page": 23, "line": 9}
+{"text": "c.wedge(10, 600, 100, 550, 45, 90, stroke=1, fill=0)", "page": 23, "line": 10}
+{"text": "c.circle(300, 600, 50)", "page": 23, "line": 11}
+{"text": "c.save()", "page": 23, "line": 12}
+{"text": "if __name__ == '__main__':", "page": 23, "line": 13}
+{"text": "draw_shapes()", "page": 23, "line": 14}
+{"text": "Whenyourunthiscode,youshouldendupwithadocumentthatdrawssomethinglikethis:", "page": 23, "line": 15}
+{"text": "Chapter1-GettingStartedwithReportlab 21", "page": 24, "line": 1}
+{"text": "Fig.1-6:Drawingpolygonsonthecanvas", "page": 24, "line": 2}
+{"text": "Let\u2019s take a few moments to go over the various arguments that each of these polygon methods", "page": 24, "line": 3}
+{"text": "accept.Therect\u2019scodesignaturelookslikethis:", "page": 24, "line": 4}
+{"text": "def rect(self, x, y, width, height, stroke=1, fill=0):", "page": 24, "line": 5}
+{"text": "Thatmeansthatyousetthelowerleft-handcorneroftherectangle\u2019spositionviaitsx/yparameters.Thenyousetitswidthandheight.ThestrokeparametertellsReportLabifitshoulddrawthelines,sointhedemocodeIsetstroke=1,orTrue.ThefillparametertellsReportLabtofilltheinteriorofthepolygonthatIdrewwithacolor.", "page": 24, "line": 6}
+{"text": "Nowlet\u2019slookattheellipse\u2019sdefinition:", "page": 24, "line": 7}
+{"text": "def ellipse(self, x1, y1, x2, y2, stroke=1, fill=0):", "page": 24, "line": 8}
+{"text": "This one is very similar to the rect. According to method\u2019s docstring, the x1, y1, x2, y2 parameters", "page": 24, "line": 9}
+{"text": "arethecornerpointsoftheenclosingrectangle.Thestrokeandfillparametersoperatethesamewayastherect\u2019s.Justforfun,wewentaheadandsettheellipse\u2019sfillto1.", "page": 24, "line": 10}
+{"text": "Chapter1-GettingStartedwithReportlab 22", "page": 25, "line": 1}
+{"text": "Nextwehavethewedge:", "page": 25, "line": 2}
+{"text": "def wedge(self, x1,y1, x2,y2, startAng, extent, stroke=1, fill=0):", "page": 25, "line": 3}
+{"text": "The x1,y1, x2,y2 parameters for the wedge actually correspond to the coordinates of an invisible", "page": 25, "line": 4}
+{"text": "enclosingrectanglethatgoesaroundafull360degreecircleversionofthewedge.Soyouwillneedtoimaginethatthefullcirclewitharectanglearoundittohelpyoupositionawedgecorrectly.Italsohasastartingangleparameter(startAng)andtheextentparameter,whichbasicallytellsthewedgehowfarouttoarcto.Theotherparametershavealreadybeenexplained.", "page": 25, "line": 5}
+{"text": "Finallywereachthecirclepolygon.It\u2019smethodlookslikethis:", "page": 25, "line": 6}
+{"text": "def circle(self, x_cen, y_cen, r, stroke=1, fill=0):", "page": 25, "line": 7}
+{"text": "Thecircle\u2019sargumentsareprobablythemostself-explanatoryofallofthepolygonswehavelookedat.Thex_cenandy_cenargumentsarethex/ycoordinatesofthecenterofthecircle.Therargumentistheradius.Thestrokeandfillargumentsareprettyobvious.", "page": 25, "line": 8}
+{"text": "All the poloygons have the ability to set the stroke (or line) color via the setStrokeColorRGB", "page": 25, "line": 9}
+{"text": "method. It accepts Red, Green, Blue values for its parameters. You can also set the stroke color", "page": 25, "line": 10}
+{"text": "byusingthesetStrokeColororthesetStrokeColorCMYKmethod.", "page": 25, "line": 11}
+{"text": "Therearecorrespondingfillcolorsetterstoo(i.e.setFillColor,setFillColorRGB,setFillColorCMYK),althoughIdidn\u2019tshowthoseinthedemocode.Thereasonthatwasn\u2019tcoveredaboveisthatwearegoingtocoveritintheverynextsection!", "page": 25, "line": 12}
+{"text": "Using Colors in ReportLab", "page": 25, "line": 13}
+{"text": "ReportLabhassupportforapplyingcolorsinseveraldifferentways.Youcanaddacolortoadrawingusingoneoftwomethods:RGBorCMYK.InthecaseofRGB,thereareactuallythreedifferentmethods:", "page": 25, "line": 14}
+{"text": "\u2022 Byspecifyingred/green/bluevalues(i.e.valuesmustbebetweenzeroandone)", "page": 25, "line": 15}
+{"text": "\u2022 Bynameor", "page": 25, "line": 16}
+{"text": "\u2022 Bygraylevel", "page": 25, "line": 17}
+{"text": "Frankly I think the gray level specification is a bit misleading in that you\u2019re really only specifying", "page": 25, "line": 18}
+{"text": "what level of gray you want, not any other color. Let\u2019s start with gray levels though and work our", "page": 25, "line": 19}
+{"text": "wayupthroughtheothermethods!", "page": 25, "line": 20}
+{"text": "Chapter1-GettingStartedwithReportlab 23", "page": 26, "line": 1}
+{"text": "# gray_color_demo.py", "page": 26, "line": 2}
+{"text": "from reportlab.lib.pagesizes import letter", "page": 26, "line": 3}
+{"text": "from reportlab.pdfgen import canvas", "page": 26, "line": 4}
+{"text": "def gray_color_demo():", "page": 26, "line": 5}
+{"text": "my_canvas = canvas.Canvas(\"grays.pdf\",", "page": 26, "line": 6}
+{"text": "pagesize=letter)", "page": 26, "line": 7}
+{"text": "my_canvas.setFont('Helvetica', 10)", "page": 26, "line": 8}
+{"text": "x = 30", "page": 26, "line": 9}
+{"text": "grays = [0.0, 0.25, 0.50, 0.75, 1.0]", "page": 26, "line": 10}
+{"text": "for gray in grays:", "page": 26, "line": 11}
+{"text": "my_canvas.setFillGray(gray)", "page": 26, "line": 12}
+{"text": "my_canvas.circle(x, 730, 20, fill=1)", "page": 26, "line": 13}
+{"text": "gray_str = \"Gray={gray}\".format(gray=gray)", "page": 26, "line": 14}
+{"text": "my_canvas.setFillGray(0.0)", "page": 26, "line": 15}
+{"text": "my_canvas.drawString(x-10, 700, gray_str)", "page": 26, "line": 16}
+{"text": "x += 75", "page": 26, "line": 17}
+{"text": "my_canvas.save()", "page": 26, "line": 18}
+{"text": "if __name__ == '__main__':", "page": 26, "line": 19}
+{"text": "gray_color_demo()", "page": 26, "line": 20}
+{"text": "This code should be pretty self-explanatory, but let\u2019s break it down anyway. First off, we create a", "page": 26, "line": 21}
+{"text": "listofdifferentgrayvalues.ThenwesetthefillcolorusingsetFillGray.Afterthatwedrawacircleandtellittofill.Finallywecreateastringanddrawitunderneatheachcirclesowehavethecircleslabeledwiththeirgrayvalue.Whenyourunthiscode,youshouldseesomethinglikethis:", "page": 26, "line": 22}
+{"text": "Chapter1-GettingStartedwithReportlab 24", "page": 27, "line": 1}
+{"text": "Fig.1-7:ReportLab\u2019sshadesofgray", "page": 27, "line": 2}
+{"text": "Let\u2019s move on to learn how to add some color. The first method we will look at is setting the fill", "page": 27, "line": 3}
+{"text": "colorbyname:", "page": 27, "line": 4}
+{"text": "# colors_demo.py", "page": 27, "line": 5}
+{"text": "from reportlab.lib import colors", "page": 27, "line": 6}
+{"text": "from reportlab.lib.pagesizes import letter", "page": 27, "line": 7}
+{"text": "from reportlab.pdfgen import canvas", "page": 27, "line": 8}
+{"text": "def color_demo():", "page": 27, "line": 9}
+{"text": "my_canvas = canvas.Canvas(\"colors.pdf\",", "page": 27, "line": 10}
+{"text": "pagesize=letter)", "page": 27, "line": 11}
+{"text": "my_canvas.setFont('Helvetica', 10)", "page": 27, "line": 12}
+{"text": "x = 30", "page": 27, "line": 13}
+{"text": "sample_colors = [colors.aliceblue,", "page": 27, "line": 14}
+{"text": "colors.aquamarine,", "page": 27, "line": 15}
+{"text": "colors.lavender,", "page": 27, "line": 16}
+{"text": "colors.beige,", "page": 27, "line": 17}
+{"text": "colors.chocolate]", "page": 27, "line": 18}
+{"text": "for color in sample_colors:", "page": 27, "line": 19}
+{"text": "my_canvas.setFillColor(color)", "page": 27, "line": 20}
+{"text": "Chapter1-GettingStartedwithReportlab 25", "page": 28, "line": 1}
+{"text": "my_canvas.circle(x, 730, 20, fill=1)", "page": 28, "line": 2}
+{"text": "color_str = \"{color}\".format(color=color._lookupName())", "page": 28, "line": 3}
+{"text": "my_canvas.setFillColor(colors.black)", "page": 28, "line": 4}
+{"text": "my_canvas.drawString(x-10, 700, color_str)", "page": 28, "line": 5}
+{"text": "x += 75", "page": 28, "line": 6}
+{"text": "my_canvas.save()", "page": 28, "line": 7}
+{"text": "if __name__ == '__main__':", "page": 28, "line": 8}
+{"text": "color_demo()", "page": 28, "line": 9}
+{"text": "Here we import the colors sub-module from ReportLab. Then we create a list of sample colors to", "page": 28, "line": 10}
+{"text": "iterateoverlikewedidwiththegraydemoearlier.ThenwedotheloopandcallsetFillColorwiththecolor\u2019sname.Nowifyouactuallyweretoprintthecolortostandardout,soyouwouldseesomethinglikethis:", "page": 28, "line": 11}
+{"text": ">>> print(colors.aliceblue)", "page": 28, "line": 12}
+{"text": "Color(.941176,.972549,1,1)", "page": 28, "line": 13}
+{"text": "So these aren\u2019t exactly just names. In fact, they are ReportLab Color objects with RGB values and", "page": 28, "line": 14}
+{"text": "an intensity level between 0 (dark) and 1 (full intensity). Anyway, the next piece of code of note is", "page": 28, "line": 15}
+{"text": "wherewegrabthecolor\u2019snameviathe_lookupName()method.Therestofthecodeisprettyeasytofigureout.", "page": 28, "line": 16}
+{"text": "Fig.1-8:Examplecolors", "page": 28, "line": 17}
+{"text": "Chapter1-GettingStartedwithReportlab 26", "page": 29, "line": 1}
+{"text": "If you want to use straight-up RGB or CMYK values, then you can edit the example above to call", "page": 29, "line": 2}
+{"text": "setFillColorRGB or setFillColorCMYK respectively. They accept RGB or CMYK colors plus an", "page": 29, "line": 3}
+{"text": "alphaparameterrespectively.TheprimaryreasontouseCMYKisforwhenyouwantmorecontroloverhowtheinkinyourprinterisappliedtotheprinter.OfcourseyouwillneedaprinterthatsupportCMYKforthistobereallyuseful.", "page": 29, "line": 4}
+{"text": "Adding a Photo", "page": 29, "line": 5}
+{"text": "ReportLab supports adding images to your PDFs via the Python Imaging Library (PIL) package.", "page": 29, "line": 6}
+{"text": "NotethatPILisnolongersupportedanditisrecommendedthatyoudownloadthePillowproject,aforkofPILthatworkswithbothPython2andPython3,somethingthattheoriginalPILdidn\u2019tdo.ToinstallPillow,youjustneedtoissuethepipcommandinyourterminal,althoughyouwillonlyneedtorunthisifitdidn\u2019tautomaticallyinstallwhenyouinstalledReportLabitself:", "page": 29, "line": 7}
+{"text": "pip install pillow", "page": 29, "line": 8}
+{"text": "NowthatwehavePillowinstalled,let\u2019stalkabouthowtoinsertaphotointoyourPDF.TheReport-Labcanvasobjectsupportstwomethods:drawInlineImageanddrawImage.ItisrecommendedthatyouusethenewerdrawImagemethodasitwillcachetheimageandallowyoutodrawitmanytimeswhileonlybeingstoredonceinthePDF.IfyouusedrawInlineImage,itwillembedtheimageintothepagestreamitself,whichmakesitmuchlessefficientastheimagewillbeaddedmultipletimestothedocumentifyoudrawitmorethanonce.Whilethedocumentationdoesn\u2019tmentionthis,IwouldassumethatthiscanalsomakethePDFlargerinfilesize.", "page": 29, "line": 9}
+{"text": "Inthisbook,wewillbeusingthedrawImagemethod.Here\u2019sanexample:", "page": 29, "line": 10}
+{"text": "# image_on_canvas.py", "page": 29, "line": 11}
+{"text": "from reportlab.lib.pagesizes import letter", "page": 29, "line": 12}
+{"text": "from reportlab.pdfgen import canvas", "page": 29, "line": 13}
+{"text": "def add_image(image_path):", "page": 29, "line": 14}
+{"text": "my_canvas = canvas.Canvas(\"canvas_image.pdf\",", "page": 29, "line": 15}
+{"text": "pagesize=letter)", "page": 29, "line": 16}
+{"text": "my_canvas.drawImage(image_path, 30, 600,", "page": 29, "line": 17}
+{"text": "width=100, height=100)", "page": 29, "line": 18}
+{"text": "my_canvas.save()", "page": 29, "line": 19}
+{"text": "if __name__ == '__main__':", "page": 29, "line": 20}
+{"text": "image_path = 'snakehead.jpg'", "page": 29, "line": 21}
+{"text": "add_image(image_path)", "page": 29, "line": 22}
+{"text": "Chapter1-GettingStartedwithReportlab 27", "page": 30, "line": 1}
+{"text": "As you can see, the drawImage method accepts the image\u2019s file path and its x / y position. These", "page": 30, "line": 2}
+{"text": "argumentsarerequired.Youcanalsospecifythewidthandheightoftheimage.Notethatthiswillnotautomaticallyscaletheimageorkeepitsaspectratio,soyoumayendupstretchingtheimageifyoudon\u2019tknowwhatyouaredoing.Finallyyoucanalsosupplyamaskparameterwhichwillallowyoutocreateatransparentimage.Thisparameterisalistof6numberswhichallowstodefinearangeofRGBvalueswhichwillbemasked.", "page": 30, "line": 3}
+{"text": "In ReportLab version 2 and newer, there is a preserveAspectRatio parameter that you can set as", "page": 30, "line": 4}
+{"text": "well as an anchor parameter. See the docstring for the drawImage method for more information", "page": 30, "line": 5}
+{"text": "ontheirproperusage.", "page": 30, "line": 6}
+{"text": "Ifyouarecurious,here\u2019swhatthePDFendeduplooking:", "page": 30, "line": 7}
+{"text": "Fig.1-9:Addinganimage", "page": 30, "line": 8}
+{"text": "Chapter1-GettingStartedwithReportlab 28", "page": 31, "line": 1}
+{"text": "The textobject", "page": 31, "line": 2}
+{"text": "Foradditionalcontrolofyourtext\u2019spresentation,youcanalsouseatextobject.FranklyIhaveneverhadtheneedforoneoftheseasReportLab\u2019sParagraphclassgivesyoumorethanenoughcontroloverthepresentationofyourtext.Buttobethorough,Iwillshowyouhowtocreateanduseatextobject.OnebenefittousethetextobjectisthatitwillmakethePDFgenerationfasterifyouuseitinsteadofmakingseparatecallstodrawString.", "page": 31, "line": 3}
+{"text": "Let\u2019sseeaquicklittledemo:", "page": 31, "line": 4}
+{"text": "# textobject_demo.py", "page": 31, "line": 5}
+{"text": "from reportlab.lib import colors", "page": 31, "line": 6}
+{"text": "from reportlab.lib.pagesizes import letter", "page": 31, "line": 7}
+{"text": "from reportlab.pdfgen import canvas", "page": 31, "line": 8}
+{"text": "def textobject_demo():", "page": 31, "line": 9}
+{"text": "my_canvas = canvas.Canvas(\"txt_obj.pdf\",", "page": 31, "line": 10}
+{"text": "pagesize=letter)", "page": 31, "line": 11}
+{"text": "# Create textobject", "page": 31, "line": 12}
+{"text": "textobject = my_canvas.beginText()", "page": 31, "line": 13}
+{"text": "# Set text location (x, y)", "page": 31, "line": 14}
+{"text": "textobject.setTextOrigin(10, 730)", "page": 31, "line": 15}
+{"text": "# Set font face and size", "page": 31, "line": 16}
+{"text": "textobject.setFont('Times-Roman', 12)", "page": 31, "line": 17}
+{"text": "# Write a line of text + carriage return", "page": 31, "line": 18}
+{"text": "textobject.textLine(text='Python rocks!')", "page": 31, "line": 19}
+{"text": "# Change text color", "page": 31, "line": 20}
+{"text": "textobject.setFillColor(colors.red)", "page": 31, "line": 21}
+{"text": "# Write red text", "page": 31, "line": 22}
+{"text": "textobject.textLine(text='Python rocks in red!')", "page": 31, "line": 23}
+{"text": "# Write text to the canvas", "page": 31, "line": 24}
+{"text": "my_canvas.drawText(textobject)", "page": 31, "line": 25}
+{"text": "my_canvas.save()", "page": 31, "line": 26}
+{"text": "Chapter1-GettingStartedwithReportlab 29", "page": 32, "line": 1}
+{"text": "if __name__ == '__main__':", "page": 32, "line": 2}
+{"text": "textobject_demo()", "page": 32, "line": 3}
+{"text": "Here we learn that to create a textobject, we need to call the canvas\u2019s beginText method.", "page": 32, "line": 4}
+{"text": "If you happen to print out the textobject, you will find that it\u2019s technically an instance of", "page": 32, "line": 5}
+{"text": "reportlab.pdfgen.textobject.PDFTextObject. Anyway, now that we have a textobject, we can set", "page": 32, "line": 6}
+{"text": "itscursorpositionusingacalltosetTextOrigin.Thenwesetthefontfaceandsizeaswesawbefore.ThenextnewitemisthecalltotextLine,whichwillallowyoutowriteastringtothebufferpluswhatisbasicallyacarriagereturn.Thedocstringforthismethodstatesthatitmakesthe\u201ctextcursormovesdown\u201d,butthatamountstoacarriagereturninmyeyes.ThereisalsoatextLinesmethodthatallowsyoutowriteamultilinestringoutaswell.Ifyouwanttocontrolthelocationofthecursor,thenyoumightwanttousetextOutasitwon\u2019taddacarriagereturntotheendofthestring.", "page": 32, "line": 7}
+{"text": "The next thing we do is set the font color by calling setFillColor. In this example, we set the the", "page": 32, "line": 8}
+{"text": "nextstringoftexttoaredcolor.ThelaststepistocalldrawText,whichwillactuallydrawwhateveryouhaveinyourtextobject.IfyouskipcallingdrawText,thenyourtextwon\u2019tbewrittenoutandyoumayendupwithanemptyPDFdocument.", "page": 32, "line": 9}
+{"text": "Here\u2019stheresultingPDF:", "page": 32, "line": 10}
+{"text": "Fig.1-10:Usingatextobject", "page": 32, "line": 11}
+{"text": "There are a lot of other methods you can call from your textobject. For example, if you want to", "page": 32, "line": 12}
+{"text": "move your cursor\u2019s position somewhere other than the very next line, you can call moveCursor.", "page": 32, "line": 13}
+{"text": "Let\u2019stakealook:", "page": 32, "line": 14}
+{"text": "Chapter1-GettingStartedwithReportlab 30", "page": 33, "line": 1}
+{"text": "# cursor_moving.py", "page": 33, "line": 2}
+{"text": "from reportlab.lib.pagesizes import letter", "page": 33, "line": 3}
+{"text": "from reportlab.pdfgen import canvas", "page": 33, "line": 4}
+{"text": "def textobject_cursor():", "page": 33, "line": 5}
+{"text": "canvas_obj = canvas.Canvas(\"textobj_cursor.pdf\", pagesize=letter)", "page": 33, "line": 6}
+{"text": "# Create textobject", "page": 33, "line": 7}
+{"text": "textobject = canvas_obj.beginText()", "page": 33, "line": 8}
+{"text": "# Set text location (x, y)", "page": 33, "line": 9}
+{"text": "textobject.setTextOrigin(10, 730)", "page": 33, "line": 10}
+{"text": "for indent in range(4):", "page": 33, "line": 11}
+{"text": "textobject.textLine('ReportLab cursor demo')", "page": 33, "line": 12}
+{"text": "textobject.moveCursor(15, 15)", "page": 33, "line": 13}
+{"text": "canvas_obj.drawText(textobject)", "page": 33, "line": 14}
+{"text": "canvas_obj.save()", "page": 33, "line": 15}
+{"text": "if __name__ == '__main__':", "page": 33, "line": 16}
+{"text": "textobject_cursor()", "page": 33, "line": 17}
+{"text": "Herewejustsetupaloopthatwillprintoutthesamestringfourtimes,butatfourdifferentpositions.Youwillnotethatwemovethecursor15pointstotherightand15pointsdownthepagewitheachiterationoftheloop.Yes,whenusingatextobject,apositiveynumberwillmoveyoudown.", "page": 33, "line": 18}
+{"text": "Now, let\u2019s say you would like to change the inter-character spacing; all you need to do is call", "page": 33, "line": 19}
+{"text": "setCharSpace.Infact,youcandoalotofinterestingspacingtrickswithtextobject,suchaschangingthespacebetweenwordusingsetWordSpaceorthespacebetweenlinesbycallingsetLeading.Let\u2019stakealookathowwemightchangethespacingofourtext:", "page": 33, "line": 20}
+{"text": "# char_spacing_demo.py", "page": 33, "line": 21}
+{"text": "from reportlab.lib.pagesizes import letter", "page": 33, "line": 22}
+{"text": "from reportlab.pdfgen import canvas", "page": 33, "line": 23}
+{"text": "def textobject_char_spacing():", "page": 33, "line": 24}
+{"text": "canvas_obj = canvas.Canvas(\"textobj_char_spacing.pdf\",", "page": 33, "line": 25}
+{"text": "pagesize=letter)", "page": 33, "line": 26}
+{"text": "Chapter1-GettingStartedwithReportlab 31", "page": 34, "line": 1}
+{"text": "# Create textobject", "page": 34, "line": 2}
+{"text": "textobject = canvas_obj.beginText()", "page": 34, "line": 3}
+{"text": "# Set text location (x, y)", "page": 34, "line": 4}
+{"text": "textobject.setTextOrigin(10, 730)", "page": 34, "line": 5}
+{"text": "spacing = 0", "page": 34, "line": 6}
+{"text": "for indent in range(8):", "page": 34, "line": 7}
+{"text": "textobject.setCharSpace(spacing)", "page": 34, "line": 8}
+{"text": "line = '{} - ReportLab spacing demo'.format(spacing)", "page": 34, "line": 9}
+{"text": "textobject.textLine(line)", "page": 34, "line": 10}
+{"text": "spacing += 0.7", "page": 34, "line": 11}
+{"text": "canvas_obj.drawText(textobject)", "page": 34, "line": 12}
+{"text": "canvas_obj.save()", "page": 34, "line": 13}
+{"text": "if __name__ == '__main__':", "page": 34, "line": 14}
+{"text": "textobject_char_spacing()", "page": 34, "line": 15}
+{"text": "Inthisexample,weincreasetheloopfactorto8iterationsandcallsetCharSpace()eachtimethroughtheloop.Westartwithzerospacingandthenadd0.7ineachiteration.Youcanseetheresulthere:", "page": 34, "line": 16}
+{"text": "Fig.1-11:Characterspacingwiththetextobject", "page": 34, "line": 17}
+{"text": "Nowlet\u2019sseehowapplyingwordspacingeffectsourtext:", "page": 34, "line": 18}
+{"text": "Chapter1-GettingStartedwithReportlab 32", "page": 35, "line": 1}
+{"text": "# wordspacing_demo.py", "page": 35, "line": 2}
+{"text": "from reportlab.lib.pagesizes import letter", "page": 35, "line": 3}
+{"text": "from reportlab.pdfgen import canvas", "page": 35, "line": 4}
+{"text": "def wordspacer():", "page": 35, "line": 5}
+{"text": "canvas_obj = canvas.Canvas(\"textobj_word_spacing.pdf\",", "page": 35, "line": 6}
+{"text": "pagesize=letter)", "page": 35, "line": 7}
+{"text": "# Create textobject", "page": 35, "line": 8}
+{"text": "textobject = canvas_obj.beginText()", "page": 35, "line": 9}
+{"text": "# Set text location (x, y)", "page": 35, "line": 10}
+{"text": "textobject.setTextOrigin(10, 730)", "page": 35, "line": 11}
+{"text": "word_spacing = 0", "page": 35, "line": 12}
+{"text": "for indent in range(8):", "page": 35, "line": 13}
+{"text": "textobject.setWordSpace(word_spacing)", "page": 35, "line": 14}
+{"text": "line = '{} - ReportLab spacing demo'.format(word_spacing)", "page": 35, "line": 15}
+{"text": "textobject.textLine(line)", "page": 35, "line": 16}
+{"text": "word_spacing += 1.5", "page": 35, "line": 17}
+{"text": "canvas_obj.drawText(textobject)", "page": 35, "line": 18}
+{"text": "canvas_obj.save()", "page": 35, "line": 19}
+{"text": "if __name__ == '__main__':", "page": 35, "line": 20}
+{"text": "wordspacer()", "page": 35, "line": 21}
+{"text": "This example is pretty much the same as the previous one, but you will note that we are calling", "page": 35, "line": 22}
+{"text": "setWordSpace() instead of setCharSpace() and we are increasing the spacing by a factor of 1.5 in", "page": 35, "line": 23}
+{"text": "thisexample.Theresultingtextlookslikethis:", "page": 35, "line": 24}
+{"text": "Chapter1-GettingStartedwithReportlab 33", "page": 36, "line": 1}
+{"text": "Fig.1-12:Wordspacingwiththetextobject", "page": 36, "line": 2}
+{"text": "If you would like to create a superscript or subscript, then you would want to callsetRise on your", "page": 36, "line": 3}
+{"text": "textobject.Let\u2019screateademothatdemonstrateshowsettingtheriseworksinReportLab:", "page": 36, "line": 4}
+{"text": "# canvas_rising.py", "page": 36, "line": 5}
+{"text": "from reportlab.lib.pagesizes import letter", "page": 36, "line": 6}
+{"text": "from reportlab.pdfgen import canvas", "page": 36, "line": 7}
+{"text": "def apply_scripting(textobject, text, rise):", "page": 36, "line": 8}
+{"text": "textobject.setFont(\"Helvetica-Oblique\", 8)", "page": 36, "line": 9}
+{"text": "textobject.setRise(rise)", "page": 36, "line": 10}
+{"text": "textobject.textOut(text)", "page": 36, "line": 11}
+{"text": "textobject.setFont(\"Helvetica-Oblique\", 12)", "page": 36, "line": 12}
+{"text": "textobject.setRise(0)", "page": 36, "line": 13}
+{"text": "def main():", "page": 36, "line": 14}
+{"text": "canvas_obj = canvas.Canvas(\"textobj_rising.pdf\",", "page": 36, "line": 15}
+{"text": "pagesize=letter)", "page": 36, "line": 16}
+{"text": "# Create textobject", "page": 36, "line": 17}
+{"text": "textobject = canvas_obj.beginText()", "page": 36, "line": 18}
+{"text": "textobject.setFont(\"Helvetica-Oblique\", 12)", "page": 36, "line": 19}
+{"text": "# Set text location (x, y)", "page": 36, "line": 20}
+{"text": "textobject.setTextOrigin(10, 730)", "page": 36, "line": 21}
+{"text": "textobject.textOut('ReportLab ')", "page": 36, "line": 22}
+{"text": "Chapter1-GettingStartedwithReportlab 34", "page": 37, "line": 1}
+{"text": "apply_scripting(textobject, 'superscript ', 7)", "page": 37, "line": 2}
+{"text": "textobject.textOut('and ')", "page": 37, "line": 3}
+{"text": "apply_scripting(textobject, 'subscript ', -7)", "page": 37, "line": 4}
+{"text": "canvas_obj.drawText(textobject)", "page": 37, "line": 5}
+{"text": "canvas_obj.save()", "page": 37, "line": 6}
+{"text": "if __name__ == '__main__':", "page": 37, "line": 7}
+{"text": "main()", "page": 37, "line": 8}
+{"text": "Herewecreateacoupleoffunctions,apply_scriptingandmain.Themainfunctionwillcreateourcanvasandalltheotherbitsandpiecesweneed.Thenwewriteoutsomenormaltext.Thenextfewlinesarewhereweapplysuperscripting(positive)andsubscripting(negative).Notethatweneedtosettherisebacktozerobetweenthesuperscriptandsubscripttomaketheword,\u201cand\u201d,appearintherightlocation.Assoonasyouapplyarisingvalue,itwillcontinuetoapplyfromthatpointon.Soyouwillwanttoresetittozerotomakesurethetextstaysinanormallocation.Youwillalsonotethatwesetthefontsizeforthesuperandsubscriptstobesmallerthantheregulartext.Hereistheresultofrunningthisexample:", "page": 37, "line": 9}
+{"text": "Fig.1-13:Canvasrisingwiththetextobject", "page": 37, "line": 10}
+{"text": "Check out ReportLab\u2019s user guide for more interesting things you can do or check the source code", "page": 37, "line": 11}
+{"text": "itself.", "page": 37, "line": 12}
+{"text": "Create a Page Break", "page": 37, "line": 13}
+{"text": "OneofthefirstthingsIwantedtoknowwhenIwascreatingPDFswithReportLabwashowtoaddapagebreaksoIcouldhavemultipagePDFdocuments.ThecanvasobjectallowsyoutodothisviatheshowPagemethod.Notehoweverthatforcomplexdocuments,youwillalmostcertainlyuseReportLab\u2019sflowables,whicharespecialclassesspecificallyfor\u201cflowing\u201dyourdocumentsacrossmultiplepages.Flowablesarekindofmindbendingintheirownright,buttheyarealsoalotnicertousethantryingtokeeptrackofwhichpageyouareonandwhereyourcursorpositionisatalltimes.", "page": 37, "line": 14}
+{"text": "Chapter1-GettingStartedwithReportlab 35", "page": 38, "line": 1}
+{"text": "Canvas Orientation (Portrait vs. Landscape)", "page": 38, "line": 2}
+{"text": "ReportLab defaults its page orientation to Portrait, which is what all word processors do as well.", "page": 38, "line": 3}
+{"text": "Butsometimesyouwillwanttouseapageinlandscapeinstead.ThereareatleasttwowaystotellReportlabtousealandscapeorientation.Thefirstoneisaconveniencefunctioncalledlandscapethatyoucanimportfromreportlab.lib.pagesizes.Youwoulduseitlikethis:", "page": 38, "line": 4}
+{"text": "from reportlab.lib.pagesizes import landscape, letter", "page": 38, "line": 5}
+{"text": "from reportlab.pdfgen import canvas", "page": 38, "line": 6}
+{"text": "c = canvas.Canvas('test.pdf', pagesize=letter)", "page": 38, "line": 7}
+{"text": "c.setPageSize( landscape(letter) )", "page": 38, "line": 8}
+{"text": "Theotherwaytosetlandscapeisjustsetthepagesizeexplicitly:", "page": 38, "line": 9}
+{"text": "from reportlab.lib.pagesizes import letter", "page": 38, "line": 10}
+{"text": "from reportlab.pdfgen import canvas", "page": 38, "line": 11}
+{"text": "from reportlab.lib.units import inch", "page": 38, "line": 12}
+{"text": "c = canvas.Canvas('test.pdf', pagesize=letter)", "page": 38, "line": 13}
+{"text": "c.setPageSize( (11*inch, 8.5*inch) )", "page": 38, "line": 14}
+{"text": "Youcouldmakethismoregenericbydoingsomethinglikethisthough:", "page": 38, "line": 15}
+{"text": "from reportlab.lib.pagesizes import letter", "page": 38, "line": 16}
+{"text": "from reportlab.pdfgen import canvas", "page": 38, "line": 17}
+{"text": "width, height = letter", "page": 38, "line": 18}
+{"text": "c = canvas.Canvas('test.pdf', pagesize=letter)", "page": 38, "line": 19}
+{"text": "c.setPageSize( (height, width) )", "page": 38, "line": 20}
+{"text": "Thismightmakemoresense,especiallyifyouwantedtouseotherpopularpagesizes,likeA4.", "page": 38, "line": 21}
+{"text": "Other methods", "page": 38, "line": 22}
+{"text": "There are a bunch of additional methods that I\u2019m not even going to cover in this chapter. For", "page": 38, "line": 23}
+{"text": "example, there are methods to set some metadata for your PDF, such as the author (setAuthor),", "page": 38, "line": 24}
+{"text": "title (setTitle) and subject (setSubject). The bookmarkPage method is actually useful if you want", "page": 38, "line": 25}
+{"text": "to create bookmarks in your PDF though. There are also methods for creating a named form and", "page": 38, "line": 26}
+{"text": "theninteractingwithit(beginForm,endForm,etc).JustgolookthroughtheReportLab\u2019suserguideforacompletelistorcheckoutthecanvas\u2019ssource.", "page": 38, "line": 27}
+{"text": "Chapter1-GettingStartedwithReportlab 36", "page": 39, "line": 1}
+{"text": "A Simple Sample Application", "page": 39, "line": 2}
+{"text": "Sometimes it\u2019s nice to see how you can take what you\u2019ve learned and see if applied. So let\u2019s take", "page": 39, "line": 3}
+{"text": "someofthemethodswe\u2019velearnedabouthereandcreateasimpleapplicationthatcreateaform:", "page": 39, "line": 4}
+{"text": "# sample_form_letter.py", "page": 39, "line": 5}
+{"text": "from reportlab.lib.pagesizes import letter", "page": 39, "line": 6}
+{"text": "from reportlab.pdfgen import canvas", "page": 39, "line": 7}
+{"text": "def create_form(filename, date, amount, receiver):", "page": 39, "line": 8}
+{"text": "\"\"\"", "page": 39, "line": 9}
+{"text": "@param date: The date to use", "page": 39, "line": 10}
+{"text": "@param amount: The amount owed", "page": 39, "line": 11}
+{"text": "@param receiver: The person who received the amount owed", "page": 39, "line": 12}
+{"text": "\"\"\"", "page": 39, "line": 13}
+{"text": "my_canvas = canvas.Canvas(filename, pagesize=letter)", "page": 39, "line": 14}
+{"text": "my_canvas.setLineWidth(.3)", "page": 39, "line": 15}
+{"text": "my_canvas.setFont('Helvetica', 12)", "page": 39, "line": 16}
+{"text": "my_canvas.drawString(30, 750,'OFFICIAL COMMUNIQUE')", "page": 39, "line": 17}
+{"text": "my_canvas.drawString(30, 735,'OF ACME INDUSTRIES')", "page": 39, "line": 18}
+{"text": "my_canvas.drawString(500, 750, date)", "page": 39, "line": 19}
+{"text": "my_canvas.line(480, 747, 580, 747)", "page": 39, "line": 20}
+{"text": "my_canvas.drawString(275, 725,'AMOUNT OWED:')", "page": 39, "line": 21}
+{"text": "my_canvas.drawString(500, 725, amount)", "page": 39, "line": 22}
+{"text": "my_canvas.line(378,723, 580, 723)", "page": 39, "line": 23}
+{"text": "my_canvas.drawString(30, 703,'RECEIVED BY:')", "page": 39, "line": 24}
+{"text": "my_canvas.line(120, 700, 580, 700)", "page": 39, "line": 25}
+{"text": "my_canvas.drawString(120, 703, receiver)", "page": 39, "line": 26}
+{"text": "my_canvas.save()", "page": 39, "line": 27}
+{"text": "if __name__ == '__main__':", "page": 39, "line": 28}
+{"text": "create_form('form.pdf', '01/23/2018',", "page": 39, "line": 29}
+{"text": "'$1,999', 'Mike')", "page": 39, "line": 30}
+{"text": "Here we just create a simple function called create_form that accepts the filename, the date we", "page": 39, "line": 31}
+{"text": "wantforourform,theamountowedandthepersonwhoreceivestheamountowed.Thenwepainteverythinginthedesiredlocationsandsavethefile.Whenyourunthis,youwillseethefollowing:", "page": 39, "line": 32}
+{"text": "Chapter1-GettingStartedwithReportlab 37", "page": 40, "line": 1}
+{"text": "Fig.1-14:ASampleFormletter", "page": 40, "line": 2}
+{"text": "Thatlooksprettyprofessionalforashortpieceofcode.", "page": 40, "line": 3}
+{"text": "Wrapping Up", "page": 40, "line": 4}
+{"text": "We covered a lot of information in this chapter. You should now know how to create a pretty basic", "page": 40, "line": 5}
+{"text": "PDF. I highly recommend trying out the examples in this chapter and then going back and editing", "page": 40, "line": 6}
+{"text": "themabittoseewhatallyoucanaccomplishonyourown.Onceyouaredoneplayingaroundthecanvasmethodsmentionedhere,prepareyourselvesasthenextchapterwillbeabouthowReportLabhandlesfonts.", "page": 40, "line": 7}
+{"text": "Chapter 2 - ReportLab and Fonts", "page": 41, "line": 1}
+{"text": "We covered a little information about fonts in chapter 1, but I thought it was important to talk a", "page": 41, "line": 2}
+{"text": "littleaboutReportLab\u2019sfontsupport.Afewyearsago,ReportLabaddedsupportforAsianlanguages.TheyalsosupportTrueTypefontsandType-1fonts.It\u2019salsoworthtalkingaboutencodingsinthischapter,whichiswhatwewilldiscussnext.", "page": 41, "line": 3}
+{"text": "Unicode / UTF8 is the Default", "page": 41, "line": 4}
+{"text": "Way back in 2006, ReportLab made it so that all text you provide to their APIs should be in UTF8", "page": 41, "line": 5}
+{"text": "or as Python Unicode objects. This should be done with the canvas.DrawString methods as well", "page": 41, "line": 6}
+{"text": "as in the flowables that accept text (i.e. strings) as their argument. Fortunately Python 3\u2019s \u201cstrings\u201d", "page": 41, "line": 7}
+{"text": "are Unicode by default, so you won\u2019t even have to think all that much about this topic if you just", "page": 41, "line": 8}
+{"text": "use the latest Python. However if you are using an older version of Python AND your string is not", "page": 41, "line": 9}
+{"text": "encoded as UTF8, then you will get aUnicodeDecodeErrorif you give it any character that is not", "page": 41, "line": 10}
+{"text": "ASCII.", "page": 41, "line": 11}
+{"text": "ThefixistojustencodeyourtextasUTF8oruseaUnicodeobject.Justkeepthatinmindifyourunintothesesortsofissues.", "page": 41, "line": 12}
+{"text": "The Standard Fonts", "page": 41, "line": 13}
+{"text": "ReportLabcomeswithasetoffontsbydefault.Theydon\u2019tneedtobestored/embeddedinyourPDFasAdobe\u2019sAcrobatReaderguaranteesthattheywillbethere.YoucangetalistofthefontsavailablebycallingthegetAvailableFonts()canvasmethod.ThisisthelistIreceived:", "page": 41, "line": 14}
+{"text": "\u2022 Courier", "page": 41, "line": 15}
+{"text": "\u2022 Courier-Bold", "page": 41, "line": 16}
+{"text": "\u2022 Courier-BoldOblique", "page": 41, "line": 17}
+{"text": "\u2022 Courier-Oblique", "page": 41, "line": 18}
+{"text": "\u2022 Helvetica", "page": 41, "line": 19}
+{"text": "\u2022 Helvetica-Bold", "page": 41, "line": 20}
+{"text": "\u2022 Helvetica-BoldOblique", "page": 41, "line": 21}
+{"text": "\u2022 Helvetica-Oblique", "page": 41, "line": 22}
+{"text": "\u2022 Symbol", "page": 41, "line": 23}
+{"text": "\u2022 Times-Bold", "page": 41, "line": 24}
+{"text": "\u2022 Times-BoldItalic", "page": 41, "line": 25}
+{"text": "\u2022 Times-Italic", "page": 41, "line": 26}
+{"text": "\u2022 Times-Roman", "page": 41, "line": 27}
+{"text": "Chapter2-ReportLabandFonts 39", "page": 42, "line": 1}
+{"text": "\u2022 ZapfDingbats", "page": 42, "line": 2}
+{"text": "ReportLab supports limited automatic font substitution. This will happen only if the ReportLab", "page": 42, "line": 3}
+{"text": "engine detects a character that is not in your font of choice. In these cases, ReportLab\u2019s engine", "page": 42, "line": 4}
+{"text": "willattempttoswitchtoSymbolorZapfDingbatstodisplaysaidcharacter.Here\u2019saquickdemo:", "page": 42, "line": 5}
+{"text": "# basic_font_demo.py", "page": 42, "line": 6}
+{"text": "from reportlab.lib.pagesizes import letter", "page": 42, "line": 7}
+{"text": "from reportlab.pdfgen import canvas", "page": 42, "line": 8}
+{"text": "def font_demo(my_canvas, fonts):", "page": 42, "line": 9}
+{"text": "pos_y = 750", "page": 42, "line": 10}
+{"text": "for font in fonts:", "page": 42, "line": 11}
+{"text": "my_canvas.setFont(font, 12)", "page": 42, "line": 12}
+{"text": "my_canvas.drawString(30, pos_y, font)", "page": 42, "line": 13}
+{"text": "pos_y -= 10", "page": 42, "line": 14}
+{"text": "if __name__ == '__main__':", "page": 42, "line": 15}
+{"text": "my_canvas = canvas.Canvas(\"basic_font_demo.pdf\",", "page": 42, "line": 16}
+{"text": "pagesize=letter)", "page": 42, "line": 17}
+{"text": "fonts = my_canvas.getAvailableFonts()", "page": 42, "line": 18}
+{"text": "font_demo(my_canvas, fonts)", "page": 42, "line": 19}
+{"text": "my_canvas.save()", "page": 42, "line": 20}
+{"text": "You will note that all we need to do to get a list of fonts is to call the getAvailableFonts method.", "page": 42, "line": 21}
+{"text": "Whenyourunthiscode,youwillgetthefollowinginyourPDF:", "page": 42, "line": 22}
+{"text": "Chapter2-ReportLabandFonts 40", "page": 43, "line": 1}
+{"text": "Fig.2-1:Thestandardfonts", "page": 43, "line": 2}
+{"text": "Nowlet\u2019slearnaboutembeddingfontsinyourPDFdocument.", "page": 43, "line": 3}
+{"text": "Other Type-1 Fonts", "page": 43, "line": 4}
+{"text": "If you need to embed a non-standard font, then you will need a couple of font description files.", "page": 43, "line": 5}
+{"text": "One needs to be in the Adobe AFM (Adobe Font Metrics) format and the other needs to be in PFB", "page": 43, "line": 6}
+{"text": "(Printer Font Binary) format. The Adobe AFM file is actually ASCII and tells ReportLab about the", "page": 43, "line": 7}
+{"text": "glyph\u2019softhefont.Afont\u2019sglyphdescribestheheight,width,boundingboxinformationandotherfontmetrics.ThePFBdescribestheshapesofthefontandisinbinaryformat,soyouwon\u2019tbeabletoreaditwithoutahexeditororsimilar.IhavehadtousethesefilesforembeddingacheckfontintoaPDFbefore.", "page": 43, "line": 8}
+{"text": "Fortunately, ReportLab actually includes an open source font called DarkGardenMK that they", "page": 43, "line": 9}
+{"text": "distribute with ReportLab in their fonts folder. Let\u2019s write a little demo that shows how to embed", "page": 43, "line": 10}
+{"text": "thisfontinourPDF:", "page": 43, "line": 11}
+{"text": "Chapter2-ReportLabandFonts 41", "page": 44, "line": 1}
+{"text": "# type1_font_demo.py", "page": 44, "line": 2}
+{"text": "import os", "page": 44, "line": 3}
+{"text": "import reportlab", "page": 44, "line": 4}
+{"text": "from reportlab.lib.pagesizes import letter", "page": 44, "line": 5}
+{"text": "from reportlab.pdfbase import pdfmetrics", "page": 44, "line": 6}
+{"text": "from reportlab.pdfgen import canvas", "page": 44, "line": 7}
+{"text": "def embedded_font_demo():", "page": 44, "line": 8}
+{"text": "my_canvas = canvas.Canvas(\"type1_font_demo.pdf\",", "page": 44, "line": 9}
+{"text": "pagesize=letter)", "page": 44, "line": 10}
+{"text": "reportlab_folder = os.path.dirname(reportlab.__file__)", "page": 44, "line": 11}
+{"text": "fonts_folder = os.path.join(reportlab_folder, 'fonts')", "page": 44, "line": 12}
+{"text": "print('ReportLab font folder is located at {}'.format(", "page": 44, "line": 13}
+{"text": "fonts_folder))", "page": 44, "line": 14}
+{"text": "afm = os.path.join(fonts_folder, 'DarkGardenMK.afm')", "page": 44, "line": 15}
+{"text": "pfb = os.path.join(fonts_folder, 'DarkGardenMK.pfb')", "page": 44, "line": 16}
+{"text": "# Register the font so we can use it", "page": 44, "line": 17}
+{"text": "font_face = pdfmetrics.EmbeddedType1Face(afm, pfb)", "page": 44, "line": 18}
+{"text": "pdfmetrics.registerTypeFace(font_face)", "page": 44, "line": 19}
+{"text": "face_name = 'DarkGardenMK'", "page": 44, "line": 20}
+{"text": "font = pdfmetrics.Font('DarkGardenMK',", "page": 44, "line": 21}
+{"text": "face_name,", "page": 44, "line": 22}
+{"text": "'WinAnsiEncoding')", "page": 44, "line": 23}
+{"text": "pdfmetrics.registerFont(font)", "page": 44, "line": 24}
+{"text": "# Use the font!", "page": 44, "line": 25}
+{"text": "my_canvas.setFont('DarkGardenMK', 40)", "page": 44, "line": 26}
+{"text": "my_canvas.drawString(10, 730, 'The DarkGardenMK font')", "page": 44, "line": 27}
+{"text": "my_canvas.save()", "page": 44, "line": 28}
+{"text": "if __name__ == '__main__':", "page": 44, "line": 29}
+{"text": "embedded_font_demo()", "page": 44, "line": 30}
+{"text": "Thisisafairlycomplexprocess.Firstwehaveourimports.Notethatweneedpdfmetricstoregisterthefont.ThenwecreateourdemofunctionandbuildthefontfolderbygettingReportLab\u2019sinstalllocation.Iaddedaprint()statementsothatyoucouldfindoutwherethisfolderislocatedincaseyouwouldliketobrowsethroughit.NextwegetthepathstotheAFMandPFBfiles.Nowwe\u2019refinally", "page": 44, "line": 31}
+{"text": "Chapter2-ReportLabandFonts 42", "page": 45, "line": 1}
+{"text": "ready to register the font with ReportLab. That process begins by instantiating the pdfmetrics\u2019s", "page": 45, "line": 2}
+{"text": "EmbeddedType1Face class and passing it the AFM and PFB file paths. Next we register the font\u2019s", "page": 45, "line": 3}
+{"text": "face via the call to registerTypeFace. Funnily enough, I accidentally discovered that if I don\u2019t call", "page": 45, "line": 4}
+{"text": "that function, the code works just fine, so I am actually not sure why this is needed other than", "page": 45, "line": 5}
+{"text": "possiblyasanitycheck.", "page": 45, "line": 6}
+{"text": "Anyway, the next step is to instantiate the Font class by passing it the name of the font, the face", "page": 45, "line": 7}
+{"text": "name and the encoding. Then you can just register the font by calling registerFont. Now we can", "page": 45, "line": 8}
+{"text": "actuallyusethefontinourPDF.ThisistheresultIgotwhenIranthiscode:", "page": 45, "line": 9}
+{"text": "Fig.2-2:EmbeddingaType-1Font", "page": 45, "line": 10}
+{"text": "I don\u2019t know when you would want to use this font other than possibly for when a dragon speaks,", "page": 45, "line": 11}
+{"text": "butitlookskindofneat!", "page": 45, "line": 12}
+{"text": "You can also edit the T1 font search path in rl_settings.py, which is located in your ReportLab", "page": 45, "line": 13}
+{"text": "installation location. The variable you will need to set is called T1SearchPath. On my system, the", "page": 45, "line": 14}
+{"text": "defaultlookslikethis:", "page": 45, "line": 15}
+{"text": ">>> from reportlab import rl_settings", "page": 45, "line": 16}
+{"text": ">>> rl_settings.T1SearchPath", "page": 45, "line": 17}
+{"text": "('c:/Program Files/Adobe/Acrobat 9.0/Resource/Font',", "page": 45, "line": 18}
+{"text": "'c:/Program Files/Adobe/Acrobat 8.0/Resource/Font',", "page": 45, "line": 19}
+{"text": "'c:/Program Files/Adobe/Acrobat 7.0/Resource/Font',", "page": 45, "line": 20}
+{"text": "'c:/Program Files/Adobe/Acrobat 6.0/Resource/Font',", "page": 45, "line": 21}
+{"text": "'c:/Program Files/Adobe/Acrobat 5.0/Resource/Font',", "page": 45, "line": 22}
+{"text": "'c:/Program Files/Adobe/Acrobat 4.0/Resource/Font',", "page": 45, "line": 23}
+{"text": "'%(disk)s/Applications/Python %(sys_version)s/reportlab/fonts',", "page": 45, "line": 24}
+{"text": "'/usr/lib/Acrobat9/Resource/Font',", "page": 45, "line": 25}
+{"text": "'/usr/lib/Acrobat8/Resource/Font',", "page": 45, "line": 26}
+{"text": "'/usr/lib/Acrobat7/Resource/Font',", "page": 45, "line": 27}
+{"text": "'/usr/lib/Acrobat6/Resource/Font',", "page": 45, "line": 28}
+{"text": "'/usr/lib/Acrobat5/Resource/Font',", "page": 45, "line": 29}
+{"text": "'/usr/lib/Acrobat4/Resource/Font',", "page": 45, "line": 30}
+{"text": "'/usr/local/Acrobat9/Resource/Font',", "page": 45, "line": 31}
+{"text": "'/usr/local/Acrobat8/Resource/Font',", "page": 45, "line": 32}
+{"text": "'/usr/local/Acrobat7/Resource/Font',", "page": 45, "line": 33}
+{"text": "'/usr/local/Acrobat6/Resource/Font',", "page": 45, "line": 34}
+{"text": "'/usr/local/Acrobat5/Resource/Font',", "page": 45, "line": 35}
+{"text": "'/usr/local/Acrobat4/Resource/Font',", "page": 45, "line": 36}
+{"text": "'/usr/share/fonts/default/Type1',", "page": 45, "line": 37}
+{"text": "Chapter2-ReportLabandFonts 43", "page": 46, "line": 1}
+{"text": "'%(REPORTLAB_DIR)s/fonts',", "page": 46, "line": 2}
+{"text": "'%(REPORTLAB_DIR)s/../fonts',", "page": 46, "line": 3}
+{"text": "'%(REPORTLAB_DIR)s/../../fonts',", "page": 46, "line": 4}
+{"text": "'%(CWD)s/fonts',", "page": 46, "line": 5}
+{"text": "'~/fonts',", "page": 46, "line": 6}
+{"text": "'~/.fonts',", "page": 46, "line": 7}
+{"text": "'%(XDG_DATA_HOME)s/fonts',", "page": 46, "line": 8}
+{"text": "'~/.local/share/fonts',", "page": 46, "line": 9}
+{"text": "'/usr/share/fonts/type1/gsfonts')", "page": 46, "line": 10}
+{"text": "TrueType Fonts", "page": 46, "line": 11}
+{"text": "AddingTrueTypefontsinyourPDFusingReportLabisabitlesscomplicatedthanembeddingType-1Fonts.Let\u2019stakealookandseehowTrueTypefontembeddingdiffersfromType-1:", "page": 46, "line": 12}
+{"text": "# truetype_font_demo.py", "page": 46, "line": 13}
+{"text": "import os", "page": 46, "line": 14}
+{"text": "import reportlab", "page": 46, "line": 15}
+{"text": "from reportlab.lib.pagesizes import letter", "page": 46, "line": 16}
+{"text": "from reportlab.pdfbase import pdfmetrics", "page": 46, "line": 17}
+{"text": "from reportlab.pdfbase.ttfonts import TTFont", "page": 46, "line": 18}
+{"text": "from reportlab.pdfgen import canvas", "page": 46, "line": 19}
+{"text": "def embedded_font_demo():", "page": 46, "line": 20}
+{"text": "my_canvas = canvas.Canvas(\"truetype_font_demo.pdf\",", "page": 46, "line": 21}
+{"text": "pagesize=letter)", "page": 46, "line": 22}
+{"text": "reportlab_folder = os.path.dirname(reportlab.__file__)", "page": 46, "line": 23}
+{"text": "fonts_folder = os.path.join(reportlab_folder, 'fonts')", "page": 46, "line": 24}
+{"text": "print('ReportLab font folder is located at {}'.format(", "page": 46, "line": 25}
+{"text": "fonts_folder))", "page": 46, "line": 26}
+{"text": "# Register the font so we can use it", "page": 46, "line": 27}
+{"text": "vera_font_path = os.path.join(fonts_folder, 'Vera.ttf')", "page": 46, "line": 28}
+{"text": "# Usage: TTFont(name,filename)", "page": 46, "line": 29}
+{"text": "vera_font = TTFont('Vera', vera_font_path)", "page": 46, "line": 30}
+{"text": "pdfmetrics.registerFont(vera_font)", "page": 46, "line": 31}
+{"text": "Chapter2-ReportLabandFonts 44", "page": 47, "line": 1}
+{"text": "# Use a generic font", "page": 47, "line": 2}
+{"text": "my_canvas.setFont('Helvetica', 40)", "page": 47, "line": 3}
+{"text": "my_canvas.drawString(10, 730, 'The Helvetica font')", "page": 47, "line": 4}
+{"text": "# Use the font!", "page": 47, "line": 5}
+{"text": "my_canvas.setFont('Vera', 40)", "page": 47, "line": 6}
+{"text": "my_canvas.drawString(10, 690, 'The Vera font')", "page": 47, "line": 7}
+{"text": "my_canvas.save()", "page": 47, "line": 8}
+{"text": "if __name__ == '__main__':", "page": 47, "line": 9}
+{"text": "embedded_font_demo()", "page": 47, "line": 10}
+{"text": "One of the first changes is that we need to import TTFont from reportlab.pdfbase.ttfonts. Then", "page": 47, "line": 11}
+{"text": "wemakeaninstanceofthatclassbypassingitthefont\u2019snameandthefont\u2019sfilepath.ThenwecallregisterFontaswedidwiththeType-1fontsintheprevioussection.Therestofthecodeisprettymuchthesame.", "page": 47, "line": 12}
+{"text": "I would also like to point out that there is aregisterFontFamily method that you should be aware", "page": 47, "line": 13}
+{"text": "of.Thismethodwillallowyoutomapthebold,italicandbolditalicversionsofthefonttothesamename.Ofcourseifyouhaveallthedifferentversionsofthefont,thanyoucanusethisfunctiontoregisterthosenametoo.Here\u2019sthesignatureyouwouldusefortheVerafont:", "page": 47, "line": 14}
+{"text": "pdfmetrics.registerFontFamily('Vera', normal='Vera',bold='VeraBd',", "page": 47, "line": 15}
+{"text": "italic='VeraIt',boldItalic='VeraBI')", "page": 47, "line": 16}
+{"text": "Asyoucansee,youjustpassthenameofthevariousflavorsofthefonttotheappropriateparameter.", "page": 47, "line": 17}
+{"text": "An alternative way to include TrueType fonts is to set the font search path in rl_settings.py in", "page": 47, "line": 18}
+{"text": "much the same way that you did the T1 search path. For TrueType fonts, you will want to set the", "page": 47, "line": 19}
+{"text": "TTFSearchPathvariable.ThedefaultspathsthatReportLablooksinareasfollows:", "page": 47, "line": 20}
+{"text": ">>> from reportlab import rl_settings", "page": 47, "line": 21}
+{"text": ">>> rl_settings.TTFSearchPath", "page": 47, "line": 22}
+{"text": "('c:/winnt/fonts',", "page": 47, "line": 23}
+{"text": "'c:/windows/fonts',", "page": 47, "line": 24}
+{"text": "'/usr/lib/X11/fonts/TrueType/',", "page": 47, "line": 25}
+{"text": "'/usr/share/fonts/truetype',", "page": 47, "line": 26}
+{"text": "'/usr/share/fonts',", "page": 47, "line": 27}
+{"text": "'/usr/share/fonts/dejavu',", "page": 47, "line": 28}
+{"text": "'%(REPORTLAB_DIR)s/fonts',", "page": 47, "line": 29}
+{"text": "'%(REPORTLAB_DIR)s/../fonts',", "page": 47, "line": 30}
+{"text": "'%(REPORTLAB_DIR)s/../../fonts',", "page": 47, "line": 31}
+{"text": "'%(CWD)s/fonts',", "page": 47, "line": 32}
+{"text": "'~/fonts',", "page": 47, "line": 33}
+{"text": "Chapter2-ReportLabandFonts 45", "page": 48, "line": 1}
+{"text": "'~/.fonts',", "page": 48, "line": 2}
+{"text": "'%(XDG_DATA_HOME)s/fonts',", "page": 48, "line": 3}
+{"text": "'~/.local/share/fonts',", "page": 48, "line": 4}
+{"text": "'~/Library/Fonts',", "page": 48, "line": 5}
+{"text": "'/Library/Fonts',", "page": 48, "line": 6}
+{"text": "'/Network/Library/Fonts',", "page": 48, "line": 7}
+{"text": "'/System/Library/Fonts',", "page": 48, "line": 8}
+{"text": "'/usr/share/fonts/truetype',", "page": 48, "line": 9}
+{"text": "'/usr/share/fonts/truetype/kacst-one',", "page": 48, "line": 10}
+{"text": "'/usr/share/fonts/truetype/freefont',", "page": 48, "line": 11}
+{"text": "'/usr/share/fonts/truetype/nanum',", "page": 48, "line": 12}
+{"text": "'/usr/share/fonts/truetype/ttf-khmeros-core',", "page": 48, "line": 13}
+{"text": "'/usr/share/fonts/truetype/lohit-punjabi',", "page": 48, "line": 14}
+{"text": "'/usr/share/fonts/truetype/takao-gothic',", "page": 48, "line": 15}
+{"text": "'/usr/share/fonts/truetype/sinhala',", "page": 48, "line": 16}
+{"text": "'/usr/share/fonts/truetype/ancient-scripts',", "page": 48, "line": 17}
+{"text": "'/usr/share/fonts/truetype/tlwg',", "page": 48, "line": 18}
+{"text": "'/usr/share/fonts/truetype/lyx',", "page": 48, "line": 19}
+{"text": "'/usr/share/fonts/truetype/lao',", "page": 48, "line": 20}
+{"text": "'/usr/share/fonts/truetype/fonts-guru-extra',", "page": 48, "line": 21}
+{"text": "'/usr/share/fonts/truetype/abyssinica',", "page": 48, "line": 22}
+{"text": "'/usr/share/fonts/truetype/dejavu',", "page": 48, "line": 23}
+{"text": "'/usr/share/fonts/truetype/tibetan-machine',", "page": 48, "line": 24}
+{"text": "'/usr/share/fonts/truetype/ubuntu-font-family',", "page": 48, "line": 25}
+{"text": "'/usr/share/fonts/truetype/ttf-bitstream-vera',", "page": 48, "line": 26}
+{"text": "'/usr/share/fonts/truetype/kacst',", "page": 48, "line": 27}
+{"text": "'/usr/share/fonts/truetype/openoffice',", "page": 48, "line": 28}
+{"text": "'/usr/share/fonts/truetype/liberation',", "page": 48, "line": 29}
+{"text": "'/usr/share/fonts/truetype/noto',", "page": 48, "line": 30}
+{"text": "'/usr/share/fonts/truetype/padauk')", "page": 48, "line": 31}
+{"text": "If your font is in one of those paths, then you can simplify your code a bit because you won\u2019t need", "page": 48, "line": 32}
+{"text": "toincludetheentirepathanylonger:", "page": 48, "line": 33}
+{"text": "vera_font = TTFont('Vera', 'Vera.ttf')", "page": 48, "line": 34}
+{"text": "pdfmetrics.registerFont(vera_font)", "page": 48, "line": 35}
+{"text": "Asian Fonts", "page": 48, "line": 36}
+{"text": "Afewyearsago,ReportLabaddedsupportforAsianfonts.ReportLabcurrentlysupports,Japanese,TraditionalChinese(Taiwan/HongKong),SimplifiedChinese(mainlandChina)andKorean.Theydothisbysupportingthefollowingfonts:", "page": 48, "line": 37}
+{"text": "Chapter2-ReportLabandFonts 46", "page": 49, "line": 1}
+{"text": "\u2022 chs=ChineseSimplified(mainland):\u2018STSong-Light\u2019", "page": 49, "line": 2}
+{"text": "\u2022 cht=ChineseTraditional(Taiwan):\u2018MSung-Light\u2019,\u2018MHei-Medium\u2019", "page": 49, "line": 3}
+{"text": "\u2022 kor=Korean:\u2018HYSMyeongJoStd-Medium\u2019,\u2019HYGothic-Medium\u2019", "page": 49, "line": 4}
+{"text": "\u2022 jpn=Japanese:\u2018HeiseiMin-W3\u2019,\u2018HeiseiKakuGo-W5\u2019", "page": 49, "line": 5}
+{"text": "IfyouuseoneofthesefontsinyourPDF,thenyouwilllikelydiscoverthatitisn\u2019tinstalledandAdobe\u2019sReadermaypopupadialoglikethefollowing:", "page": 49, "line": 6}
+{"text": "Fig.2-3:Fontpackagewarning", "page": 49, "line": 7}
+{"text": "Let\u2019swritesomecodetowritethecharactersusedfortheword\u201cNippon\u201d,whichmeansJapan.ThecharacterswewilluseareJapanesekanjithatwereconvertedtoUnicode.Forthisexample,IjustlookedupaUnicodeconverteronlineandaskedittoconvert\u201cNippon\u201dtoUnicode.Here\u2019sthecode:", "page": 49, "line": 8}
+{"text": "# asian_font_demo.py", "page": 49, "line": 9}
+{"text": "# Works with Python 2 and 3", "page": 49, "line": 10}
+{"text": "from reportlab.lib.pagesizes import letter", "page": 49, "line": 11}
+{"text": "from reportlab.pdfbase import pdfmetrics", "page": 49, "line": 12}
+{"text": "from reportlab.pdfbase.cidfonts import UnicodeCIDFont", "page": 49, "line": 13}
+{"text": "from reportlab.pdfgen import canvas", "page": 49, "line": 14}
+{"text": "def asian_font_demo():", "page": 49, "line": 15}
+{"text": "my_canvas = canvas.Canvas(\"asian_font_demo.pdf\",", "page": 49, "line": 16}
+{"text": "pagesize=letter)", "page": 49, "line": 17}
+{"text": "# Set a Japanese font", "page": 49, "line": 18}
+{"text": "pdfmetrics.registerFont(UnicodeCIDFont('HeiseiMin-W3'))", "page": 49, "line": 19}
+{"text": "my_canvas.setFont('HeiseiMin-W3', 16)", "page": 49, "line": 20}
+{"text": "Chapter2-ReportLabandFonts 47", "page": 50, "line": 1}
+{"text": "# Find a word or phrase in Unicode to write out", "page": 50, "line": 2}
+{"text": "nippon = u'\\u65e5\\u672c' # Nippon / Japan in Unicode", "page": 50, "line": 3}
+{"text": "my_canvas.drawString(25, 730, nippon)", "page": 50, "line": 4}
+{"text": "my_canvas.save()", "page": 50, "line": 5}
+{"text": "if __name__ == '__main__':", "page": 50, "line": 6}
+{"text": "asian_font_demo()", "page": 50, "line": 7}
+{"text": "When I ran this and tried to open the resulting PDF with Adobe Reader, I received the aforemen-", "page": 50, "line": 8}
+{"text": "tioneddialogaboutneedingtodownloadafontpackage,FontPack11009_XtdAlf_Lang.msi,whichendedupbeinga52MBdownload.Ifyoudon\u2019tinstallthefontpackage,thenthePDFwillappeartobeblankwhenopened.Afterinstallingthefonts,Igotthefollowingresult:", "page": 50, "line": 9}
+{"text": "Fig.2-4:EmbeddinganAsianfont", "page": 50, "line": 10}
+{"text": "Since Python 3 supports Unicode out of the box, you don\u2019t have to use Unicode characters directly", "page": 50, "line": 11}
+{"text": "like we did in the example above. You can just use the actual Kanji! Just for fun, I went ahead and", "page": 50, "line": 12}
+{"text": "updatedtheexampletousesomeactualKanji:", "page": 50, "line": 13}
+{"text": "Chapter2-ReportLabandFonts 48", "page": 51, "line": 1}
+{"text": "# asian_font_demo2.py", "page": 51, "line": 2}
+{"text": "from reportlab.lib.pagesizes import letter", "page": 51, "line": 3}
+{"text": "from reportlab.pdfbase import pdfmetrics", "page": 51, "line": 4}
+{"text": "from reportlab.pdfbase.cidfonts import UnicodeCIDFont", "page": 51, "line": 5}
+{"text": "from reportlab.pdfgen import canvas", "page": 51, "line": 6}
+{"text": "def asian_font_demo():", "page": 51, "line": 7}
+{"text": "my_canvas = canvas.Canvas(\"asian_font_demo2.pdf\",", "page": 51, "line": 8}
+{"text": "pagesize=letter)", "page": 51, "line": 9}
+{"text": "# Set a Japanese font", "page": 51, "line": 10}
+{"text": "pdfmetrics.registerFont(UnicodeCIDFont('HeiseiMin-W3'))", "page": 51, "line": 11}
+{"text": "my_canvas.setFont('HeiseiMin-W3', 16)", "page": 51, "line": 12}
+{"text": "# Find a word or phrase in Unicode to write out", "page": 51, "line": 13}
+{"text": "nippon = '\u00e6\u201e\u203a\u00e6\u0192\u2026' # Love in Japanese", "page": 51, "line": 14}
+{"text": "my_canvas.drawString(25, 730, nippon)", "page": 51, "line": 15}
+{"text": "my_canvas.save()", "page": 51, "line": 16}
+{"text": "if __name__ == '__main__':", "page": 51, "line": 17}
+{"text": "asian_font_demo()", "page": 51, "line": 18}
+{"text": "You can also use TrueType fonts that have Asian characters. This is even easier to use than the", "page": 51, "line": 19}
+{"text": "UnicodeCIDFontthatwehadtouseintheprevioussection.TheReportLabengineersdidmentionintheirdocumentationthatthesekindsoffontscantaketimetoparseandthatlargesubsetsofthefontwillneedtobeembeddedinyourPDFforthecharacterstobedisplayedcorrectly.TheyalsonotedthatReportLabcanalsoparse.ttcfiles,whichisavariantoftheTrueTypeextension,.ttf.", "page": 51, "line": 20}
+{"text": "There are also the Noto and Source Han (Sans/Serif) fonts, which are both open source. Noto is", "page": 51, "line": 21}
+{"text": "fromGoogleandaimstosupportalllanguageswhereasSourceHanSansisasetofOpenType/CFFPan-CJKfontsfromAdobe.", "page": 51, "line": 22}
+{"text": "Chapter2-ReportLabandFonts 49", "page": 52, "line": 1}
+{"text": "Switching Between Fonts", "page": 52, "line": 2}
+{"text": "Fig.2-5:Switchingbetweenfonts", "page": 52, "line": 3}
+{"text": "We technically have already covered how to switch between fonts, but I didn\u2019t actually call it out", "page": 52, "line": 4}
+{"text": "in the previous examples. So I wanted to make sure my readers were quite clear on how to change", "page": 52, "line": 5}
+{"text": "fontswhilegeneratingtheirPDFswithReportLab.Let\u2019stakealookatasimpledemo:", "page": 52, "line": 6}
+{"text": "# font_switching.py", "page": 52, "line": 7}
+{"text": "import string", "page": 52, "line": 8}
+{"text": "import sys", "page": 52, "line": 9}
+{"text": "from reportlab.pdfbase import pdfmetrics", "page": 52, "line": 10}
+{"text": "from reportlab.pdfgen import canvas", "page": 52, "line": 11}
+{"text": "def standardFonts():", "page": 52, "line": 12}
+{"text": "\"\"\"", "page": 52, "line": 13}
+{"text": "Create a PDF with all the standard fonts", "page": 52, "line": 14}
+{"text": "\"\"\"", "page": 52, "line": 15}
+{"text": "for enc in ['MacRoman', 'WinAnsi']:", "page": 52, "line": 16}
+{"text": "canv = canvas.Canvas(", "page": 52, "line": 17}
+{"text": "'StandardFonts_%s.pdf' % enc,", "page": 52, "line": 18}
+{"text": "Chapter2-ReportLabandFonts 50", "page": 53, "line": 1}
+{"text": ")", "page": 53, "line": 2}
+{"text": "canv.setPageCompression(0)", "page": 53, "line": 3}
+{"text": "x = 0", "page": 53, "line": 4}
+{"text": "y = 744", "page": 53, "line": 5}
+{"text": "for faceName in pdfmetrics.standardFonts:", "page": 53, "line": 6}
+{"text": "if faceName in ['Symbol', 'ZapfDingbats']:", "page": 53, "line": 7}
+{"text": "encLabel = faceName+'Encoding'", "page": 53, "line": 8}
+{"text": "else:", "page": 53, "line": 9}
+{"text": "encLabel = enc + 'Encoding'", "page": 53, "line": 10}
+{"text": "fontName = faceName + '-' + encLabel", "page": 53, "line": 11}
+{"text": "pdfmetrics.registerFont(pdfmetrics.Font(fontName,", "page": 53, "line": 12}
+{"text": "faceName,", "page": 53, "line": 13}
+{"text": "encLabel)", "page": 53, "line": 14}
+{"text": ")", "page": 53, "line": 15}
+{"text": "canv.setFont('Times-Bold', 18)", "page": 53, "line": 16}
+{"text": "canv.drawString(80, y, fontName)", "page": 53, "line": 17}
+{"text": "y -= 20", "page": 53, "line": 18}
+{"text": "alpha = \"abcdefghijklmnopqrstuvwxyz\"", "page": 53, "line": 19}
+{"text": "canv.setFont(fontName, 14)", "page": 53, "line": 20}
+{"text": "canv.drawString(x+85, y, alpha)", "page": 53, "line": 21}
+{"text": "y -= 20", "page": 53, "line": 22}
+{"text": "canv.save()", "page": 53, "line": 23}
+{"text": "if __name__ == \"__main__\":", "page": 53, "line": 24}
+{"text": "standardFonts()", "page": 53, "line": 25}
+{"text": "Asmentionedearlier,Reportlabsupportsseveralfontsinternally.Youcanthinkofthemasstandardordefaultfonts.ThescriptabovewillcreatetwoPDFs:StandardFonts_MacRoman.pdfandStandardFonts_WinAnsi.pdf.Asyoucansee,wejustuseanestedpairofforloopstoextractthevariousfontsandregisterthemwithReportlab.ThenwecalledsetFontwiththeselectedfont.Fromthatpointforward,ReportLabwillusethatfontwhenitdrawstext.WhenyoucallsetFontagain,thatwillchangeyourcurrentlyselectedfonttotheoneyouspecifiedandthenthatwillbethefontused.Inotherwords,ReportLabalwaysusesthelastsetfontorthedefaultuntilyouexplicitlysetittosomethingelse.", "page": 53, "line": 26}
+{"text": "Bytheway,thedifferencebetweenMacRomanandWinAnsiisthatonewasdevelopedbyAppleand", "page": 53, "line": 27}
+{"text": "Chapter2-ReportLabandFonts 51", "page": 54, "line": 1}
+{"text": "theotherbecameaMicrosoftproprietarycharacterset.Whiletheyareidenticalforsomecharacter(32-126ofASCII),theyeachhavedifferentdistinctsetsofcontrolcharacters.", "page": 54, "line": 2}
+{"text": "Wrapping Up", "page": 54, "line": 3}
+{"text": "InthischapterwecoveredhowtoembedType-1andTrueTypefontsinourPDFsusingReportLab.WealsocoveredReportLab\u2019sAsianfontsupport.YoushouldtakesometimeandplayaroundwiththeseexamplestomakesureyoufullyunderstandhowtoembedfontsinyourPDF.ThisisquitehandywhenyouneedtogiveyourdocumentsauniquelookoryouneedtosupportyourAsiancustomers.", "page": 54, "line": 4}
